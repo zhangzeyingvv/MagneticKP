@@ -68,15 +68,18 @@ Gfc[g_,x_]:=g . Conjugate[x] . Inverse[g];
 If[IntegerQ[ikOrder],kOrder=Range[0,ikOrder],kOrder=ikOrder];
 symham=0 IdentityMatrix[ndim];
 np=0;
+
 Do[
-klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{3},Range[0,5]],1];
+klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{3},Range[0,Order]],1];
 basedim=Length[klist];
+(*Print[klist];*)
 V=IdentityMatrix[ndim^2 basedim];
 
 Do[
 F=fd[{Order,iop[[2]]}];
 If[MissingQ[F],
 rotK = Thread[{kx, ky, kz} -> iop[[2]]];
+(*Print[rotK];*)
 fkg=klist/.rotK;
 F=Table[tmp[i,j],{i,basedim},{j,basedim}]/.First@SolveAlways[klist ==fkg . Table[tmp[i,j],{i,basedim},{j,basedim}],{kx,ky,kz}];
 ];
@@ -285,7 +288,8 @@ Gfc[g_,x_]:=g . Conjugate[x] . Inverse[g];
 symham=0 IdentityMatrix[ndim];
 np=0;
 Do[
-klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@SortBy[Values[Solve[Or@@Table[a+b+c==i,{i,#}],{a,b,c},NonNegativeIntegers]&[{Order}]],{Total[#]}&];
+(*klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@SortBy[Values[Solve[Or@@Table[a+b+c==i,{i,#}],{a,b,c},NonNegativeIntegers]&[{Order}]],{Total[#]}&];*)
+klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{3},Range[0,Order]],1];
 basedim=Length[klist];
 nullspace=IdentityMatrix[ndim^2 basedim];
 Do[
