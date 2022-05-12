@@ -15,8 +15,8 @@ The version of Mathematica should higher or equal to 11.3.
 
 ## Capabilities of MagneticKP
 
-* Construct the k·p model for given (co)representation matrices
-* Both iterative simplification algorithm and direct-product decomposition algorithm are implemented in MagneticKP
+* Construct the k·p model for given (co)representation matrices.
+* Both iterative simplification algorithm and direct-product decomposition algorithm are implemented in MagneticKP.
 * By Interfaceing with [```SpaceGroupIrep```](https://github.com/goodluck1982/SpaceGroupIrep) or ```MSGCorep``` packages, it can directly output the k·p Hamiltonian around arbitrary momentum, expanded to arbitrary order in k.
 
 
