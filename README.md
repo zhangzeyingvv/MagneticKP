@@ -1,6 +1,6 @@
 # MagneticKP
 
-A package using iterative simplification algorithm for quickly constructing k·p models.
+A package use iterative simplification algorithm for quickly constructing k·p models.
 
 
 ## Installation
