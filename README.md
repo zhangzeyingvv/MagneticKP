@@ -5,7 +5,7 @@ A package use iterative simplification algorithm for quickly constructing k·p m
 
 ## Installation
 
-The steps of installing MagneticKP is exactly the same as installing MagneticTB:
+The steps of installing MagneticKP is exactly the same as installing [MagneticTB](https://github.com/zhangzeyingvv/MagneticTB):
 Unzip the "MagneticKP-main.zip" file and copy the MagneticKP directory to any directory in $Path. e.g.,
 copy to ```FileNameJoin[{$UserBaseDirectory, "Applications"}]```.
 
