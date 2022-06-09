@@ -19,7 +19,7 @@ The version of Mathematica should higher or equal to 11.3.
 * Both iterative simplification algorithm and direct-product decomposition algorithm are implemented in MagneticKP.
 * By Interfaceing with [```SpaceGroupIrep```](https://github.com/goodluck1982/SpaceGroupIrep) or ```MSGCorep``` packages, it can directly output the k·p Hamiltonian around arbitrary momentum, expanded to arbitrary order in k.
 
-See [arXiv:2205.05830](https://arxiv.org/abs/2205.05830) for detail (please cite this paper if you use our code for your research).
+See [arXiv:2205.05830](https://arxiv.org/abs/2205.05830) for detail (please cite this preprint if you use our code for your research).
 
 ## Examples
 
