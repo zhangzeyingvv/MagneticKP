@@ -62,7 +62,9 @@ toHam[nullspace_,order_]:=
 Module[{c,her},
 her=X;
 (*her[[1]]=0IdentityMatrix[ndim];*)
-Total@Table[Subscript[C,order,line] Total@(Flatten[her # &/@ klist,1]nullspace[[line]]),{line,Length[nullspace]}]];
+Total@Table[Subscript[C,order,line]=1;
+ Subscript[C,order,line]=.;
+ Subscript[C,order,line] Total@(Flatten[her # &/@ klist,1]nullspace[[line]]),{line,Length[nullspace]}]];
 Gf[g_,x_]:=g . x . Inverse[g];
 Gfc[g_,x_]:=g . Conjugate[x] . Inverse[g];
 If[IntegerQ[ikOrder],kOrder=Range[0,ikOrder],kOrder=ikOrder];
