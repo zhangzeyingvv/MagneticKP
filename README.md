@@ -24,3 +24,9 @@ See [arXiv:2205.05830](https://arxiv.org/abs/2205.05830) for detail (please cite
 ## Examples
 
 See examples.nb.
+
+## Release Notes
+
+v1.01   2022/06/30
+
+* Support low-dimensional (one- and two-dimensional ) kp Hamiltonian. See example.nb file for examples.
