@@ -11,6 +11,7 @@ Begin["`Private`"]
 installdir=DirectoryName[$InputFileName];
 (*installdir="C:\\Users\\zhang\\AppData\\Roaming\\Mathematica\\Applications\\MagneticKP\\";*)
 fd=Import[installdir<>"fd.mx"];
+If[Not@AssociationQ[fd],fd=Association[]];
 
 
 (* ::Subsection:: *)
@@ -29,13 +30,17 @@ symham,symHgk,gHMinusHg,klist,
 check,bases,GM,
 MRmsymc,
 matop,res,np,end,null,
-allsymm
+allsymm,
+dim
 },
 GM={{{1,0,0},{0,1,0},{0,0,1}},{{0,-I,0},{I,0,0},{0,0,0}},{{0,0,-I},{0,0,0},{I,0,0}},{{0,0,0},{0,0,-I},{0,I,0}},{{0,1,0},{1,0,0},{0,0,0}},{{1,0,0},{0,-1,0},{0,0,0}},{{0,0,1},{0,0,0},{1,0,0}},{{0,0,0},{0,0,1},{0,1,0}},1/Sqrt[3] {{1,0,0},{0,1,0},{0,0,-2}}};
 
 If[AssociationQ[input],MRmsymc=Values/@(If[MissingQ[#1],Association[],#1]&/@{input["Unitary"],input["Anitunitary"],
 input["AntisymmetryUnitaryTest"],input["AntisymmetryAnitunitaryTest"]}),MRmsymc=input];
-ndim = Length[MRmsymc[[1,1,1]]];
+dim=Length[(MRmsymc/.{{}->Nothing})[[1,-1,-1]]];
+If[dim!=3,Print[ToString[dim]<>" Dimensional kp"]];
+ndim = Length[(MRmsymc/.{{}->Nothing})[[1,1,1]]];
+(*Print[ndim];*)
 allsymm={};
 Do[
 Do[AppendTo[allsymm,Append[i,s]]
@@ -72,15 +77,26 @@ symham=0 IdentityMatrix[ndim];
 np=0;
 
 Do[
-klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{3},Range[0,Order]],1];
+Which[
+dim==3,klist=kz^#[[1]]ky^#[[2]]kx^#[[3]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{3},Range[0,Order]],1],
+dim==2,klist=ky^#[[1]]kx^#[[2]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{2},Range[0,Order]],1],
+dim==1,klist=kz^#[[1]]&/@Sort@Flatten[Permutations/@IntegerPartitions[Order,{1},Range[0,Order]],1],
+True,Print["Dimension of kp should be 1,2 or 3"];Abort[]
+];
 basedim=Length[klist];
 (*Print[klist];*)
 V=IdentityMatrix[ndim^2 basedim];
-
 Do[
 F=fd[{Order,iop[[2]]}];
+(*Print[F,MissingQ@fd[{Order,iop[[2]]}]];*)
 If[MissingQ[F],
-rotK = Thread[{kx, ky, kz} -> iop[[2]]];
+Which[
+dim==3,rotK = Thread[{kx, ky, kz} -> iop[[2]]],
+dim==2,rotK = Thread[{kx, ky} -> iop[[2]]],
+dim==1,rotK = Thread[{kz} -> iop[[2]]]
+]
+
+;
 (*Print[rotK];*)
 fkg=klist/.rotK;
 F=Table[tmp[i,j],{i,basedim},{j,basedim}]/.First@SolveAlways[klist ==fkg . Table[tmp[i,j],{i,basedim},{j,basedim}],{kx,ky,kz}];
