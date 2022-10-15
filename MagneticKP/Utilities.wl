@@ -73,6 +73,33 @@ directSum =(*FullSimplify@*)ArrayFlatten[{{#1, 0}, {0, #2}}] &;
 generateMatrixGroup[gen_]:=GenerateGroup[gen,IdentityMatrix@Length[First[gen]],Dot];
 
 
+Options[bandManipulate]={"PlotRange"->All};
+bandManipulate[pathstr_,npoint_,h_,OptionsPattern[]]:=Module[
+{h0,params,mparams,m,rule,mpstr,klist,debug=False,Range=OptionValue["PlotRange"]},
+params=Complement[Variables[h],{kx,ky,kz}];
+If[debug,Print[params]];
+
+mparams=ToExpression[StringRiffle[#,"c"]&/@(params/.{Subscript->List})];
+If[debug,Print[mparams]];
+klist=2.Pi Flatten[Subdivide[#[[1]],#[[2]],npoint]&/@(Transpose[pathstr][[1]]),1];
+Print["Number of params:",Length@params];
+Print["params:",params];
+(*  Print["mparams:",mparams];*)
+rule=ToString[Thread[params->mparams],StandardForm](*~Join~{kx\[Rule]k[[1]],ky\[Rule]k[[2]],kz\[Rule]k[[3]]}*);
+(*  m=StringTake[ToString[{{#,0,StringTake[ToString[#],2;;]},-1,1}&/@mparams],{2;;-2}];*)
+If[debug,Print[rule]];
+m=StringTake[ToString[{{#1,0,#2},-1,1}&@@@Transpose[{mparams,params}],InputForm],{2;;-2}];
+If[debug,Print[mparams,m]];
+mpstr="Manipulate[\[IndentingNewLine]ListPlot[Transpose@Table[Eigenvalues[Evaluate["<>ToString[h,StandardForm]<>"/."<>rule<>"~Join~{kx\[Rule]k\[LeftDoubleBracket]1\[RightDoubleBracket],ky\[Rule]k\[LeftDoubleBracket]2\[RightDoubleBracket],kz\[Rule]k\[LeftDoubleBracket]3\[RightDoubleBracket]}]],{k,"<>ToString[klist]<>"}],
+PlotRange->"<>ToString[Range]<>",PlotStyle->Black],"<>m<>"
+,Button[\"ExportData\",Print["<>rule<>"]]
+]";
+If[debug,Print[m]];
+If[debug,Print[mpstr]];
+ToExpression[mpstr]
+];
+
+
 End[]
 EndPackage[]
 

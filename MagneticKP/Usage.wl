@@ -39,7 +39,8 @@ kz::usage = "kz"
 directSum::usage = "directSum"
 (*texOutput::usage = "Init the program"*)
 (*c::usage = "Init the program"*)
-Min
+(*Min*)
+bandManipulate::usage = "directSum"
 
 
 EndPackage[]
