@@ -33,4 +33,4 @@ v1.01   2022/06/30
 
 v1.02   2022/10/15
 
-* Add a bandManipulate for kp Hamiltonian. See example.nb file for example.
+* Add a bandManipulate function for kp Hamiltonian. See example.nb file for example.
