@@ -30,3 +30,7 @@ See examples.nb.
 v1.01   2022/06/30
 
 * Support low-dimensional (one- and two-dimensional ) kp Hamiltonian. See example.nb file for examples.
+
+v1.02   2022/10/15
+
+* Add a bandManipulate kp Hamiltonian. See example.nb file for examples.
