@@ -17,7 +17,7 @@ The version of Mathematica should higher or equal to 11.3.
 
 * Construct the k·p model for given (co)representation matrices.
 * Both iterative simplification algorithm and direct-product decomposition algorithm are implemented in MagneticKP.
-* By Interfaceing with [```SpaceGroupIrep```](https://github.com/goodluck1982/SpaceGroupIrep) or ```MSGCorep``` packages, it can directly output the k·p Hamiltonian around arbitrary momentum, expanded to arbitrary order in k.
+* By Interfaceing with [```SpaceGroupIrep```](https://github.com/goodluck1982/SpaceGroupIrep) or [```MSGCorep```](https://github.com/goodluck1982/MSGCorep) packages, it can directly output the k·p Hamiltonian around arbitrary momentum, expanded to arbitrary order in k.
 
 See [arXiv:2205.05830](https://arxiv.org/abs/2205.05830) for detail (please cite this preprint if you use our code for your research).
 
@@ -34,3 +34,4 @@ v1.01   2022/06/30
 v1.02   2022/10/15
 
 * Add a bandManipulate function for kp Hamiltonian. See example.nb file for example.
+* Support MSGCorep v1.0.0
