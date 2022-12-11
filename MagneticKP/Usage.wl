@@ -42,5 +42,5 @@ directSum::usage = "directSum"
 (*Min*)
 bandManipulate::usage = "directSum"
 
-
+bandplot::usage = "bandplot"
 EndPackage[]
