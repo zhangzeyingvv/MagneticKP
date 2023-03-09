@@ -29,7 +29,7 @@ See examples.nb.
 
 v1.01   2022/06/30
 
-* Support low-dimensional (one- and two-dimensional ) kp Hamiltonian ([arXiv:2210.11080](https://arxiv.org/abs/2210.11080)). See example.nb file for examples.
+* Support low-dimensional (one- and two-dimensional ) kp Hamiltonian ([Phys. Rev. B 107, 075405 (2023)](10.1103/PhysRevB.107.075405).[arXiv:2210.11080](https://arxiv.org/abs/2210.11080)). See example.nb file for examples.
 
 v1.02   2022/10/15
 
