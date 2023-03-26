@@ -35,3 +35,10 @@ v1.02   2022/10/15
 
 * Add ```bandManipulate``` and ```bandplot``` functions for plot the band structure of kp Hamiltonian. See example.nb file for example.
 * Support [MSGCorep](https://github.com/goodluck1982/MSGCorep) v1.0.0
+
+v1.03   2023/03/26
+
+* Add a python version of MagneticKP
+* See MagneticKP-python\doc\html\index.html for installation, capabilities, and examples the detail of python version of MagneticKP
+
+
