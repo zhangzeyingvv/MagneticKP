@@ -39,6 +39,6 @@ v1.02   2022/10/15
 v1.03   2023/03/26
 
 * Add a python version of MagneticKP
-* See  **MagneticKP-python\doc\html\index.html** for installation, capabilities, and examples the detail of python version of MagneticKP
+* Please refer to MagneticKP-python\doc\html\index.html for detailed information on the installation, capabilities, and examples of the Python version of MagneticKP.
 
 
