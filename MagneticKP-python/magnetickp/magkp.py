@@ -149,7 +149,7 @@ class kpHam(object):
         '''
         m,n=U.shape
    #     print(m,n)
-        C=[symbols(f'C_{j}^{order}') for j in range(n)]
+        C=[symbols(f'C_{j}_{order}') for j in range(n)]
        # print("C",C[0])
         bases=[]
         for i in kbases:
