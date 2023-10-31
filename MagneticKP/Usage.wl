@@ -43,4 +43,20 @@ directSum::usage = "directSum"
 bandManipulate::usage = "directSum"
 
 bandplot::usage = "bandplot"
+
+
+
+(* ::Subsection:: *)
+(*Fitting*)
+
+
+vaspEig::usage = "Read the VASP EIGENVAL file"
+bandManipulateWithVASP::usage = ""
+fittingKP::usage = ""
+
+
+(* ::Subsection:: *)
+(*End*)
+
+
 EndPackage[]
