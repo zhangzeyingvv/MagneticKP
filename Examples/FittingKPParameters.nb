@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     71584,       1750]
-NotebookOptionsPosition[     68126,       1677]
-NotebookOutlinePosition[     68618,       1696]
-CellTagsIndexPosition[     68575,       1693]
+NotebookDataLength[     71901,       1756]
+NotebookOptionsPosition[     68460,       1684]
+NotebookOutlinePosition[     68935,       1702]
+CellTagsIndexPosition[     68892,       1699]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -841,11 +841,13 @@ Cell[CellGroupData[{
 
 Cell["\<\
 vaspEig[Full path of EIGENVAL file , Fermi energy, Spin, Start band , End band]
-For no SOC calculation Spin is always 1. \
+For SOC calculations Spin is always 1, and for spin-polarized  calculations \
+Spin can be  1 or 2. \
 \>", "Subsection",
  CellChangeTimes->{{3.9077222812305145`*^9, 3.907722323819177*^9}, {
-  3.9077225120480685`*^9, 
-  3.9077225303914223`*^9}},ExpressionUUID->"cf5df273-5ccd-4c39-ab95-\
+  3.9077225120480685`*^9, 3.9077225303914223`*^9}, {3.9218581837969694`*^9, 
+  3.921858214428793*^9}, {3.9218582522049737`*^9, 
+  3.9218583273412075`*^9}},ExpressionUUID->"cf5df273-5ccd-4c39-ab95-\
 5631a0fdbf89"],
 
 Cell[BoxData[
@@ -1046,30 +1048,37 @@ Cell[BoxData[
                     MagneticKP`ky)^2) Subscript[C, 2, 3] + 
                 MagneticKP`kz^2 Subscript[C, 2, 5] + 
                 MagneticKP`kz^2 
-                 Subscript[C, 2, 6], (-(1/3) - I (-(1/3) + MagneticKP`kx)/
-                  Sqrt[3] + MagneticKP`kx - 2 I (-(1/3) + MagneticKP`ky)/Sqrt[
-                  3]) Subscript[C, 1, 1] + ((-(1/3) + MagneticKP`kx)^2 + 
-                  I Sqrt[3] (-(1/3) + MagneticKP`kx)^2 - 
-                  2 (-(1/3) + MagneticKP`kx) (-(1/3) + MagneticKP`ky) + 
-                  2 I Sqrt[3] (-(1/3) + MagneticKP`kx) (-(1/3) + 
-                    MagneticKP`ky) - 2 (-(1/3) + MagneticKP`ky)^2) 
+                 Subscript[C, 2, 6], (-(1/3) - 
+                  I ((-(1/3) + MagneticKP`kx)/Sqrt[3]) + 
+                  MagneticKP`kx - (2 I) ((-(1/3) + MagneticKP`ky)/Sqrt[3])) 
                  Subscript[
-                  C, 2, 2] + ((-I) (-(1/3) + MagneticKP`kx) 
-                   MagneticKP`kz - (-(1/3) + MagneticKP`kx) MagneticKP`kz/
-                  Sqrt[3] - 2 (-(1/3) + MagneticKP`ky) MagneticKP`kz/Sqrt[3]) 
-                 Subscript[C, 2, 4]}, {(-(1/3) + 
-                  I (-(1/3) + MagneticKP`kx)/Sqrt[3] + MagneticKP`kx + 
-                  2 I (-(1/3) + MagneticKP`ky)/Sqrt[3]) 
-                 Subscript[C, 1, 1] + ((-(1/3) + MagneticKP`kx)^2 - I 
-                  Sqrt[3] (-(1/3) + MagneticKP`kx)^2 - 
-                  2 (-(1/3) + MagneticKP`kx) (-(1/3) + MagneticKP`ky) - 2 I 
-                  Sqrt[3] (-(1/3) + MagneticKP`kx) (-(1/3) + MagneticKP`ky) - 
+                  C, 1, 1] + ((-(1/3) + MagneticKP`kx)^2 + (I 
+                    Sqrt[3]) (-(1/3) + MagneticKP`kx)^2 - (
+                   2 (-(1/3) + MagneticKP`kx)) (-(1/3) + 
+                   MagneticKP`ky) + (((2 I) Sqrt[3]) (-(1/3) + 
+                    MagneticKP`kx)) (-(1/3) + MagneticKP`ky) - 
                   2 (-(1/3) + MagneticKP`ky)^2) 
-                 Subscript[C, 2, 2] + (
-                  I (-(1/3) + MagneticKP`kx) MagneticKP`kz - (-(1/3) + 
-                   MagneticKP`kx) MagneticKP`kz/Sqrt[3] - 
-                  2 (-(1/3) + MagneticKP`ky) MagneticKP`kz/Sqrt[3]) 
-                 Subscript[C, 2, 4], Subscript[C, 0, 1] - Subscript[
+                 Subscript[
+                  C, 2, 2] + (((-I) (-(1/3) + MagneticKP`kx)) 
+                   MagneticKP`kz - (-(1/3) + MagneticKP`kx) (MagneticKP`kz/
+                   Sqrt[3]) - (2 (-(1/3) + MagneticKP`ky)) (MagneticKP`kz/
+                   Sqrt[3])) 
+                 Subscript[C, 2, 4]}, {(-(1/3) + 
+                  I ((-(1/3) + MagneticKP`kx)/Sqrt[3]) + 
+                  MagneticKP`kx + (2 I) ((-(1/3) + MagneticKP`ky)/Sqrt[3])) 
+                 Subscript[
+                  C, 1, 1] + ((-(1/3) + MagneticKP`kx)^2 - (I 
+                   Sqrt[3]) (-(1/3) + MagneticKP`kx)^2 - (
+                   2 (-(1/3) + MagneticKP`kx)) (-(1/3) + 
+                   MagneticKP`ky) - (((2 I) Sqrt[3]) (-(1/3) + 
+                    MagneticKP`kx)) (-(1/3) + MagneticKP`ky) - 
+                  2 (-(1/3) + MagneticKP`ky)^2) 
+                 Subscript[
+                  C, 2, 2] + ((I (-(1/3) + MagneticKP`kx)) 
+                   MagneticKP`kz - (-(1/3) + MagneticKP`kx) (MagneticKP`kz/
+                   Sqrt[3]) - (2 (-(1/3) + MagneticKP`ky)) (MagneticKP`kz/
+                   Sqrt[3])) Subscript[C, 2, 4], Subscript[C, 0, 1] - 
+                Subscript[
                 C, 0, 2] + ((-(1/3) + MagneticKP`kx)^2 + (-(1/3) + 
                     MagneticKP`kx) (-(1/3) + MagneticKP`ky) + (-(1/3) + 
                     MagneticKP`ky)^2) 
@@ -1109,8 +1118,7 @@ l3cm3JFDUhNZFmmZORXl8xK8w77m5Up0V56PkJ2zEw/5Sp+vwhTx9JHkEQLf
 /+Lwf7wO7If3hfPhc8J98L3g/rgOUC9cN6gvrjP0A/cF+of7CP3GfYf5wHMC
 84TnCuYPzyHMK55bmG885+AD9gL8wR6Bb9g78BN7Cj5jr8F/nAOQFzg3IF9w
 zkAe4VyC/MI5BnmHcw/yEeck5CnOVa7nNyjKTy4=
-            "]}]], 
-         PlotRange -> {-2, 3}, PlotStyle -> Black], 
+            "]}]], PlotRange -> {-2, 3}, PlotStyle -> Black], 
         ListPlot[
          Transpose[CompressedData["
 1:eJxllHk01XkYxu91r2RJhckalVG2KI1B0fdna0HjWrKX7CEadxBzDDkqImu0
@@ -1318,7 +1326,6 @@ Cell[BoxData[
       RowBox[{
        SubscriptBox["C", 
         RowBox[{"0", ",", "1"}]], "\[Rule]", "0.0008422761132460703`"}], ",", 
-      
       RowBox[{
        SubscriptBox["C", 
         RowBox[{"0", ",", "2"}]], "\[Rule]", 
@@ -1675,12 +1682,11 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{978, 981},
-WindowMargins->{{Automatic, 50}, {Automatic, 29}},
-TaggingRules->Association["TryRealOnly" -> False],
+WindowSize->{978, 735.75},
+WindowMargins->{{Automatic, 50.25}, {Automatic, 0}},
+TaggingRules-><|"TryRealOnly" -> False|>,
 Magnification:>1.1 Inherited,
-FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (2020\:5e746\:67089\
-\:65e5)",
+FrontEndVersion->"13.3 for Microsoft Windows (64-bit) (July 24, 2023)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"7f5bf858-01b1-439f-9e92-b78ba4bc0f43"
 ]
@@ -1695,61 +1701,61 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 440, 9, 55, "Input",ExpressionUUID->"e467c094-2afb-4866-8484-bcf0d58eaaaf"],
+Cell[558, 20, 440, 9, 52, "Input",ExpressionUUID->"e467c094-2afb-4866-8484-bcf0d58eaaaf"],
 Cell[CellGroupData[{
-Cell[1023, 33, 342, 5, 73, "Section",ExpressionUUID->"65b2c263-46b2-4ad2-b76a-5eb4aa441eb1"],
+Cell[1023, 33, 342, 5, 74, "Section",ExpressionUUID->"65b2c263-46b2-4ad2-b76a-5eb4aa441eb1"],
 Cell[CellGroupData[{
-Cell[1390, 42, 397, 10, 32, "Input",ExpressionUUID->"d3798287-475d-4482-b36c-1704e679ee43"],
-Cell[1790, 54, 19309, 499, 401, "Output",ExpressionUUID->"013a51a8-80ed-46da-8d06-0fa11393b677"]
+Cell[1390, 42, 397, 10, 31, "Input",ExpressionUUID->"d3798287-475d-4482-b36c-1704e679ee43"],
+Cell[1790, 54, 19309, 499, 368, "Output",ExpressionUUID->"013a51a8-80ed-46da-8d06-0fa11393b677"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[21136, 558, 175, 3, 59, "Subsection",ExpressionUUID->"0bfc3b54-def6-4d83-b7ee-f6601a25c9e5"],
 Cell[CellGroupData[{
-Cell[21336, 565, 561, 13, 32, "Input",ExpressionUUID->"1263b462-42e4-47e9-a781-42eb425b6794"],
-Cell[21900, 580, 2702, 72, 91, "Output",ExpressionUUID->"59bfb7a4-7f1c-4635-93f9-0ed7befb0f9b"]
+Cell[21336, 565, 561, 13, 31, "Input",ExpressionUUID->"1263b462-42e4-47e9-a781-42eb425b6794"],
+Cell[21900, 580, 2702, 72, 84, "Output",ExpressionUUID->"59bfb7a4-7f1c-4635-93f9-0ed7befb0f9b"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24639, 657, 391, 9, 32, "Input",ExpressionUUID->"87e4c231-57e7-4ad1-92c8-128c0fd08195"],
-Cell[25033, 668, 5273, 158, 99, "Output",ExpressionUUID->"fc343670-c38c-46b2-922d-8c9d8c1c1ef9"]
+Cell[24639, 657, 391, 9, 31, "Input",ExpressionUUID->"87e4c231-57e7-4ad1-92c8-128c0fd08195"],
+Cell[25033, 668, 5273, 158, 92, "Output",ExpressionUUID->"fc343670-c38c-46b2-922d-8c9d8c1c1ef9"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30367, 833, 222, 4, 73, "Section",ExpressionUUID->"924b2f28-f1e5-462c-b94d-f2f7bbc4490b"],
+Cell[30367, 833, 222, 4, 74, "Section",ExpressionUUID->"924b2f28-f1e5-462c-b94d-f2f7bbc4490b"],
 Cell[CellGroupData[{
-Cell[30614, 841, 332, 7, 89, "Subsection",ExpressionUUID->"cf5df273-5ccd-4c39-ab95-5631a0fdbf89"],
-Cell[30949, 850, 987, 20, 55, "Input",ExpressionUUID->"afc7eebf-7d9e-4d7c-a585-86f32f0b014e"]
+Cell[30614, 841, 491, 9, 89, "Subsection",ExpressionUUID->"cf5df273-5ccd-4c39-ab95-5631a0fdbf89"],
+Cell[31108, 852, 987, 20, 52, "Input",ExpressionUUID->"afc7eebf-7d9e-4d7c-a585-86f32f0b014e"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31985, 876, 347, 5, 73, "Section",ExpressionUUID->"a8eac50e-d2ad-4558-8066-063a8d962f13"],
+Cell[32144, 878, 347, 5, 74, "Section",ExpressionUUID->"a8eac50e-d2ad-4558-8066-063a8d962f13"],
 Cell[CellGroupData[{
-Cell[32357, 885, 199, 3, 59, "Subsection",ExpressionUUID->"0938985b-557c-49b8-874f-5b2aa43e20d1"],
+Cell[32516, 887, 199, 3, 59, "Subsection",ExpressionUUID->"0938985b-557c-49b8-874f-5b2aa43e20d1"],
 Cell[CellGroupData[{
-Cell[32581, 892, 1012, 26, 55, "Input",ExpressionUUID->"52d8d36d-ecc4-4bee-aa6c-483df86f0c3c"],
+Cell[32740, 894, 1012, 26, 52, "Input",ExpressionUUID->"52d8d36d-ecc4-4bee-aa6c-483df86f0c3c"],
 Cell[CellGroupData[{
-Cell[33618, 922, 397, 9, 23, "Print",ExpressionUUID->"e8ed8033-7728-48ca-99d1-216263e7b6b6"],
-Cell[34018, 933, 1188, 38, 26, "Print",ExpressionUUID->"6a8137f3-8211-4dbe-a93d-52178710b417"]
+Cell[33777, 924, 397, 9, 24, "Print",ExpressionUUID->"e8ed8033-7728-48ca-99d1-216263e7b6b6"],
+Cell[34177, 935, 1188, 38, 26, "Print",ExpressionUUID->"6a8137f3-8211-4dbe-a93d-52178710b417"]
 }, Open  ]],
-Cell[35221, 974, 11711, 217, 414, "Output",ExpressionUUID->"e5e0cbdc-0ed3-474d-aaac-60182c2a5978"],
-Cell[46935, 1193, 1003, 31, 26, "Print",ExpressionUUID->"9229b5de-f9df-4931-8515-e004138130d5"]
+Cell[35380, 976, 11893, 223, 413, "Output",ExpressionUUID->"e5e0cbdc-0ed3-474d-aaac-60182c2a5978"],
+Cell[47276, 1201, 1003, 31, 26, "Print",ExpressionUUID->"9229b5de-f9df-4931-8515-e004138130d5"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47999, 1231, 171, 3, 73, "Section",ExpressionUUID->"1d76bafd-71dd-4ad8-925a-b3d9a9acf896"],
+Cell[48340, 1239, 171, 3, 73, "Section",ExpressionUUID->"1d76bafd-71dd-4ad8-925a-b3d9a9acf896"],
 Cell[CellGroupData[{
-Cell[48195, 1238, 397, 8, 118, "Subsection",ExpressionUUID->"9a3d1fa5-37f1-43a2-b321-1ecc38e03f5f"],
+Cell[48536, 1246, 397, 8, 118, "Subsection",ExpressionUUID->"9a3d1fa5-37f1-43a2-b321-1ecc38e03f5f"],
 Cell[CellGroupData[{
-Cell[48617, 1250, 1445, 39, 56, "Input",ExpressionUUID->"d5341f0f-26ec-45c9-94d6-fe0b187d1a82"],
-Cell[50065, 1291, 1014, 18, 70, "Message",ExpressionUUID->"4ab00cff-b648-4c22-8012-b7814008eb34"],
-Cell[51082, 1311, 2050, 48, 86, "Output",ExpressionUUID->"9bca52fa-df68-499a-9e10-555ed1dabe98"]
+Cell[48958, 1258, 1445, 39, 56, "Input",ExpressionUUID->"d5341f0f-26ec-45c9-94d6-fe0b187d1a82"],
+Cell[50406, 1299, 1014, 18, 70, "Message",ExpressionUUID->"4ab00cff-b648-4c22-8012-b7814008eb34"],
+Cell[51423, 1319, 2043, 47, 86, "Output",ExpressionUUID->"9bca52fa-df68-499a-9e10-555ed1dabe98"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53169, 1364, 1842, 49, 77, "Input",ExpressionUUID->"3f237367-e1c3-45d1-af74-7972abbd8cd5"],
-Cell[55014, 1415, 12818, 251, 256, "Output",ExpressionUUID->"4b2fb5ed-396b-4f5d-aa49-39e1b86fb4d4"]
+Cell[53503, 1371, 1842, 49, 77, "Input",ExpressionUUID->"3f237367-e1c3-45d1-af74-7972abbd8cd5"],
+Cell[55348, 1422, 12818, 251, 256, "Output",ExpressionUUID->"4b2fb5ed-396b-4f5d-aa49-39e1b86fb4d4"]
 }, Open  ]],
-Cell[67847, 1669, 251, 4, 32, "Input",ExpressionUUID->"9e0d27ae-ed51-43ef-bf13-c8b5862ab04d"]
+Cell[68181, 1676, 251, 4, 32, "Input",ExpressionUUID->"9e0d27ae-ed51-43ef-bf13-c8b5862ab04d"]
 }, Open  ]]
 }, Open  ]]
 }
