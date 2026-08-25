@@ -1,0 +1,8 @@
+highSymmetryKPath
+returns a local labeled momentum path obtained from the complete little magnetic co-group contained in interfaceRep input.
+highSymmetryKPath[
+input = interfaceRep[
+{191, 234}
+path = highSymmetryKPath[input]
+ham = kpHam[1, input]
+bandplot[

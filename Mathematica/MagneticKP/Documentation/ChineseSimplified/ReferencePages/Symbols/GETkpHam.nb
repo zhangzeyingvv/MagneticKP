@@ -1,0 +1,38 @@
+Notebook[{Cell[CellGroupData[{Cell["GETkpHam", "ObjectName"],
+     Cell[TextData[{Cell["   ", "ModInfo"], Cell[BoxData["GETkpHam[n, input]"], "InlineFormula"], " \:2028",
+        "\:6309\:7167\:65e7\:7248\:8c03\:7528\:65b9\:5f0f\:ff0c\:4ec5\:6784\:9020 k.p \:54c8\:5bc6\:987f\:91cf\:7684 n \:9636\:9f50\:6b21\:90e8\:5206\:3002"}], "Usage"],
+     Cell["GETkpHam \:7528\:4e8e\:517c\:5bb9\:65e9\:671f MagneticKP \:7248\:672c\:7f16\:5199\:7684 Notebook\:3002", "Notes"],
+     Cell["\:65b0\:5de5\:4f5c\:5e94\:4f7f\:7528 kpHam\:ff0c\:7279\:522b\:662f\:9700\:8981\:591a\:4e2a\:9636\:6570\:6216\:8bca\:65ad\:8f93\:51fa\:65f6\:3002", "Notes"]}, Open]],
+  Cell[CellGroupData[{Cell["\:8303\:4f8b\:521d\:59cb\:5316", "ExamplesInitializationSection"],
+     Cell[BoxData["Needs[\"MagneticKP`\"]"], "ExampleInitialization"]}, Open]],
+  Cell[CellGroupData[{Cell["\:57fa\:672c\:8303\:4f8b", "PrimaryExamplesSection"], Cell["\:4ec5\:6784\:9020\:4e00\:9636\:8d21\:732e\:ff1a", "ExampleText"],
+     Cell[BoxData["input = <|\n  \"Unitary\" -> <|\n    \"C2z\" -> {\n      {{0, 1}, {-1, 0}},\n      {-kx, -ky, kz}\n  \
+  },\n    \"Inversion\" -> {\n      {{1, 0}, {0, -1}},\n      {-kx, -ky, -kz}\n    }\n  |>\n|>;\nGETkpHam[1, \
+input][\"ham\"] // MatrixForm"], "Input"],
+     Cell[BoxData[TagBox[RowBox[{"(", "\:2060", GridBox[{{"0", RowBox[{RowBox[{RowBox[{"-", "kx"}], " ",
+                 SubscriptBox["t", "1"]}], "-", RowBox[{"ky", " ", SubscriptBox["t", "2"]}], "+", RowBox[
+                {"\:f74e", " ", "kz", " ", SubscriptBox["t", "3"]}]}]},
+            {RowBox[{RowBox[{RowBox[{"-", "kx"}], " ", SubscriptBox["t", "1"]}], "-", RowBox[{"ky", " ",
+                 SubscriptBox["t", "2"]}], "-", RowBox[{"\:f74e", " ", "kz", " ", SubscriptBox["t", "3"]}]}], "0"}},
+           RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center], "\:2060", ")"}],
+        Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]], "Output"]}, Open]],
+  Cell[CellGroupData[{Cell["\:76f8\:5173\:51fd\:6570", "SeeAlsoSection"],
+     Cell[TextData[{ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"], " \:25fc ",
+        ButtonBox["IterativelySimplify", BaseStyle -> "Link", ButtonData ->
+          "paclet:MagneticKP/ref/IterativelySimplify"]}], "SeeAlso"]}, Open]],
+  Cell[CellGroupData[{Cell["\:76f8\:5173\:6307\:5357", "MoreAboutSection"],
+     Cell[TextData[{ButtonBox["MagneticKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/guide/MagneticKP"]}],
+      "MoreAbout"]}, Open]], Cell[CellGroupData[{Cell["\:76f8\:5173\:6559\:7a0b", "TutorialsSection"],
+     Cell[TextData[{ButtonBox["MagneticKP \:5165\:95e8", BaseStyle -> "Link", ButtonData ->
+          "paclet:MagneticKP/tutorial/GettingStarted"]}], "Tutorials"]}, Open]],
+  Cell[CellGroupData[{Cell["\:5386\:53f2", "HistorySection"],
+     Cell[TextData[{"\:5f15\:5165\:7248\:672c\:ff1a", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | \:4fee\:6539\:7248\:672c\:ff1a",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | \:5e9f\:5f03\:7248\:672c\:ff1a",
+        Cell[" ", "HistoryData", CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["\:5206\:7c7b", "CategorizationSection"], Cell["Symbol", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/ref/GETkpHam", "Categorization",
+      CellLabel -> "URI"]}, Closed]], Cell[CellGroupData[{Cell["\:5173\:952e\:8bcd", "KeywordsSection"],
+     Cell["\:65e7\:7248\:63a5\:53e3", "Keywords"], Cell["\:9f50\:6b21\:9636\:6570", "Keywords"], Cell["k.p \:54c8\:5bc6\:987f\:91cf", "Keywords"]},
+    Closed]]}, TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "GETkpHam",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

@@ -1,0 +1,53 @@
+Notebook[{Cell[CellGroupData[{Cell["bandManipulate", "ObjectName"],
+     Cell[TextData[{Cell["   ", "ModInfo"], Cell[BoxData["bandManipulate[path, n, ham]"], "InlineFormula"], " \:2028",
+        "\:521b\:5efa\:4ea4\:4e92\:5f0f\:80fd\:5e26\:56fe\:ff0c\:5e76\:4e3a ham \:4e2d\:7684\:81ea\:7531\:53c2\:6570\:63d0\:4f9b\:63a7\:4ef6\:3002"}], "Usage"],
+     Cell["\:6bcf\:6bb5\:8def\:5f84\:7684\:683c\:5f0f\:4e3a {{k1, k2}, {label1, label2}}\:ff0cn \:662f\:6bcf\:6bb5\:8def\:5f84\:7684\:91c7\:6837\:6570\:3002", "Notes"],
+     Cell["path \:4e2d\:7684\:52a8\:91cf\:5750\:6807\:5728\:4ee3\:5165 ham \:524d\:4f1a\:4e58\:4ee5 2 Pi\:3002", "Notes"],
+     Cell[BoxData[GridBox[{{Cell["      ", "TableRowIcon"], "\"PlotRange\"", "All",
+          Cell["\:8bbe\:7f6e\:663e\:793a\:7684\:80fd\:91cf\:8303\:56f4\:3002", "TableText"]}, {Cell["      ", "TableRowIcon"], "\"ManipulateRange\"",
+          "1", Cell["\:8bbe\:7f6e\:5bf9\:79f0\:7684\:6ed1\:5757\:8303\:56f4\:ff0c\:4e5f\:53ef\:4ee5\:660e\:786e\:7ed9\:51fa {min, max}\:3002", "TableText"]}},
+        GridBoxAlignment -> {"Columns" -> {{Left}}}]], "3ColumnTableMod"]}, Open]],
+  Cell[CellGroupData[{Cell["\:8303\:4f8b\:521d\:59cb\:5316", "ExamplesInitializationSection"],
+     Cell[BoxData["Needs[\"MagneticKP`\"]"], "ExampleInitialization"]}, Open]],
+  Cell[CellGroupData[{Cell["\:57fa\:672c\:8303\:4f8b", "PrimaryExamplesSection"],
+     Cell["\:5148\:7528 kpHam \:6784\:9020\:53cc\:5e26\:54c8\:5bc6\:987f\:91cf\:ff0c\:518d\:901a\:8fc7\:4ea4\:4e92\:5f0f\:53c2\:6570\:63a7\:4ef6\:67e5\:770b\:5176\:80fd\:5e26\:ff1a", "ExampleText"],
+     Cell[BoxData["input = <|\n  \"Unitary\" -> <|\n    \"C2z\" -> {\n      {{0, 1}, {-1, 0}},\n      {-kx, -ky, kz}\n  \
+  },\n    \"Inversion\" -> {\n      {{1, 0}, {0, -1}},\n      {-kx, -ky, -kz}\n    }\n  |>\n|>;\nham = kpHam[1, \
+input][\"ham\"];\npath = {{{{0, 0, 0}, {1/3, 0, 0}}, {\"G\", \"X\"}}};\nbandManipulate[path, 20, ham, \"PlotRange\" -> \
+{-2, 2}]"], "Input"], Cell[BoxData[DynamicBox[Uncompress["1:eJztWE2IHEUU7p1JdOMGdzVG1EVhQx+ChxA35JSA7mY2ZIKbXWYmgdy2Zrp\
+mt5iaqqaret1ZQU96ETx48aaeFDyo6EXiQXLyJxAQzEUUPCj+IGERRZSQtV737HZXT3XX7AaWgO5htqvre6++9+rVe/V6qslr7ZLjOOIe9dNAy7N8rb0Pxq\
+Pqpy57FMMbGIgJ9VPpMdQlrXnuhfHMOMyAwLNEyFhTGSSxFPvVf9x6ynWJenAG52Th3HTB3Anj3P1gQc/HAsslscKfc92IWCMIsQ58OAVsct7poqAD9F237\
+eSbY5JSfsCuWweBecxC8WAKgxjpIskDpVXT80AGs4oUhIwUmqOcDuvcp14dCZkkkmLviA4fT1vv45ZQ6+7XrNmnjcraaGRrdI5Tz7hzB2CdsClaAfGlADyO\
+SJNN9ZeiD0pqKjjEmHo4w5kMOI14wXheGeyHFNyyQzrZYBmkI/eWzrSVTmkv6Zyw0infCZ0CAkn6mA2l5CyK0rk1nweygiSKwUByMSAsG4Uai+JAS6JyOCm\
+ZSMmdSJUSqenhpcqJlNoKMZX2H16qhF1/qbFCRFVc4HKm72nLHsDEBc5wQZYj6yotRHxmQslVuiEtHT2RQoe+p7gYU2c6bxFGZEUtqxSDPWcRFQX5U3SIX0\
+0k9IQLkdCvGFArgKd4TPdM8qgQWMR7dhAWkoh5KPDO8qAbaxvrO6qCKephrw7qLqGAoKZynimu9roQZQkeSjaU4iCh6gxSzYrCLi/IlbTUWFrKVOzyy1pB7\
+copWeYqZahJprpjilFTIOaFXX58mZ0FTpnlXi/OUqN9Fy1S3s9UB6KgREz4fCuUYfsa4NcYARrnyDJmq4iGytcjW4rm4IUim8RzDfsUtfAMTR1fPZUlo7xU\
+lqTTRRqKFCPSxdlhlLIFvOusFac6k2DmXaynV5z82mVdBmaqseR6cQLM+ODuttKk5w4tz93vbb+c54T9N0pg5sqgl7r0RkcBgoJYS8d0OUlvZwZdykGvG9G\
+DMRpPtA+b4xZGgdP/G3zIAH/86PT4zetXnh4S+KUd+Okb718+Nvm1HfjxtRe+++X6N3bg5Vtvf1C7+r0deOO1V4Pjkz/YgadOvj55MPxpWI6/2oEnm+03Pz\
+t60w7kGy990bi6YQe+90nv3TPsdzvwt5e7r0xP/mEHPllDdOrzP+1A8vjF+YnwLzvwnZ/PHduc+nvY6PnHDnRfPL7x7fO37MDmefera0dv24FvHX7kwys3N\
+ofdGecZA1A/rJBHoFDXEFvG+tEkt6FXMRzwLZno60SUcGZVRe7kX6Tq6lpC2qSlrseciUxXXM4f7bYPtqncRS9rV7njftSucnc95f+doFYGjVF5rxov+HE4\
+OoNuMAVxBbdRSGWB1PYBgbt2nbBlivvXV5DQO7PMCgJaFe3b3qX4ImwnF38WxHB9J4iS9WS1pHfNisC9/6Lqi9SpxV7S4YykFzM0ERkzHwUze6y1EnDGQ1E\
+dZJBv70TEQKDV/PXNzYlZ3UOROo83siaV8k3Kb9r6XxXh9CTtccb40cjrPuWwvG7rNiZuo1VoLrAq80OZ6ucjU5/QFliqMokDP8AyeRcdnH8BTioCCQ=="]\
+, SingleEvaluation -> True, TrackedSymbols :> {}]], "Output"]}, Open]],
+  Cell[CellGroupData[{Cell["\:76f8\:5173\:51fd\:6570", "SeeAlsoSection"],
+     Cell[TextData[{ButtonBox["bandplot", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/bandplot"],
+        " \:25fc ", ButtonBox["bandManipulateWithVASP", BaseStyle -> "Link",
+         ButtonData -> "paclet:MagneticKP/ref/bandManipulateWithVASP"], " \:25fc ",
+        ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"]}], "SeeAlso"]}, Open]],
+  Cell[CellGroupData[{Cell["\:76f8\:5173\:6307\:5357", "MoreAboutSection"],
+     Cell[TextData[{ButtonBox["MagneticKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/guide/MagneticKP"]}],
+      "MoreAbout"]}, Open]], Cell[CellGroupData[{Cell["\:76f8\:5173\:6559\:7a0b", "TutorialsSection"],
+     Cell[TextData[{ButtonBox["MagneticKP \:5165\:95e8", BaseStyle -> "Link", ButtonData ->
+          "paclet:MagneticKP/tutorial/GettingStarted"]}], "Tutorials"]}, Open]],
+  Cell[CellGroupData[{Cell["\:5386\:53f2", "HistorySection"],
+     Cell[TextData[{"\:5f15\:5165\:7248\:672c\:ff1a", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | \:4fee\:6539\:7248\:672c\:ff1a",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | \:5e9f\:5f03\:7248\:672c\:ff1a",
+        Cell[" ", "HistoryData", CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["\:5206\:7c7b", "CategorizationSection"], Cell["Symbol", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/ref/bandManipulate",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["\:5173\:952e\:8bcd", "KeywordsSection"], Cell["\:80fd\:5e26\:56fe", "Keywords"],
+     Cell["\:4ea4\:4e92\:5f0f", "Keywords"], Cell["\:53c2\:6570", "Keywords"], Cell["\:52a8\:91cf\:8def\:5f84", "Keywords"]}, Closed]]},
+ TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "bandManipulate",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

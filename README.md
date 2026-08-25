@@ -1,46 +1,128 @@
 # MagneticKP
 
-A package uses an iterative simplification algorithm for quickly constructing k·p models.
+[简体中文](README.zh-CN.md)
 
+MagneticKP constructs symmetry-constrained k·p Hamiltonians from symmetry operations and (co)representation matrices. It provides Mathematica, Python, and Web interfaces.
 
 ## Installation
 
-The steps of installing MagneticKP is exactly the same as installing [MagneticTB](https://github.com/zhangzeyingvv/MagneticTB):
-Unzip the "MagneticKP-main.zip" file and copy the MagneticKP directory to any directory in $Path. e.g.,
-copy to ```FileNameJoin[{$UserBaseDirectory, "Applications"}]```.
+### Mathematica
 
+Download `MagneticKP-1.2.0.paclet` from the project [Releases page](https://github.com/zhangzeyingvv/MagneticKP/releases), then run in Mathematica:
 
-Then one can use the package after running ```Needs["MagneticKP`"]```.
-The version of Mathematica should be higher or equal to 11.3.
+```wl
+PacletInstall[SystemDialogInput["FileOpen"]]
+Needs["MagneticKP`"]
+```
 
-## Capabilities of MagneticKP
+Select the downloaded `.paclet` file in the file dialog. Mathematica 12.1 or later is required.
 
-* Construct the k·p model for given (co)representation matrices.
-* Both the iterative simplification algorithm and direct-product decomposition algorithm are implemented in MagneticKP.
-* By Interfacing with [SpaceGroupIrep](https://github.com/goodluck1982/SpaceGroupIrep) or [MSGCorep](https://github.com/goodluck1982/MSGCorep) packages, it can directly output the k·p Hamiltonian around arbitrary momentum, expanded to arbitrary order in k.
+### Python/Web
 
-See [arXiv:2205.05830](https://arxiv.org/abs/2205.05830) for details (please cite this preprint if you use our code for your research).
+Enter the `Python-Web` directory. It is recommended to create and use a virtual environment in this directory:
 
-## Examples
+```bash
+python3 -m venv env
+source env/bin/activate
+python -m pip install --upgrade pip
+python -m pip install --find-links dist dist/magnetickp-1.2.0-py3-none-any.whl
+magnetickp-web
+```
 
-See Examples.
+The installation command automatically installs `msgcorep` from the same `dist/` directory; no separate installation is required. Then open `http://127.0.0.1:8000` in a browser.
 
-## Release Notes
+When finished, leave the virtual environment with:
 
-v1.01   2022/06/30
+```bash
+deactivate
+```
 
-* Support low-dimensional (one- and two-dimensional ) kp Hamiltonian ([Phys. Rev. B 107, 075405 (2023)](https://link.aps.org/doi/10.1103/PhysRevB.107.075405) ([arXiv:2210.11080](https://arxiv.org/abs/2210.11080))). See Examples\GeneralExamples.nb file for examples.
+To use MagneticKP again later, enter the `Python-Web` directory and run `source env/bin/activate` before starting Python or `magnetickp-web`.
 
-v1.02   2022/10/15
+## MagneticKP capabilities
 
-* Add ```bandManipulate``` and ```bandplot``` functions for plot the band structure of kp Hamiltonian. See Examples\GeneralExamples.nb file for examples.
-* Support [MSGCorep](https://github.com/goodluck1982/MSGCorep) v1.0.0
+* Construct k·p Hamiltonians to arbitrary order;
+* Support magnetic, non-magnetic, and spin-orbit-coupled systems;
+* Support the internal continuous spin rotation `CInfinity`;
+* Select magnetic space groups, k points, and corepresentations through MSGCorep;
+* Automatically calculate local high-symmetry k paths from the little co-group at the selected k point;
+* Plot bands and fit parameters to first-principles band structures;
+* Provide Mathematica, Python, and Web interfaces.
 
-v1.03   2023/03/26
+## How to open the manuals
 
-* Add a python version of MagneticKP
-* Please refer to **MagneticKP-python\doc\html\index.html** for detailed information on the installation, capabilities, and examples of the Python version of MagneticKP.
+After installing the Paclet, open the built-in Mathematica help with:
 
-v1.04   2023/10/31
+```wl
+Documentation`HelpLookup["paclet:MagneticKP/guide/MagneticKP"]
+```
 
-* Add three functions ```vaspEig```, ```bandManipulateWithVASP```, and ```fittingKP``` to fit the kp Hamiltonian. See Examples\FittingKPParameters.nb file for example.
+The built-in help includes English and simplified-Chinese pages.
+
+For Python/Web, run `magnetickp-web`, then open `http://127.0.0.1:8000/help/` in a browser.
+
+For more details, see [Mathematica/README.md](Mathematica/README.md) and [Python-Web/README.md](Python-Web/README.md).
+
+## Simple examples
+
+### Mathematica
+
+```wl
+input = <|
+  "Unitary" -> <|
+    "C2z" -> {PauliMatrix[3], {-kx, -ky, kz}}
+  |>
+|>;
+
+kpHam[2, input]
+```
+
+### Python
+
+```python
+from sympy import Matrix
+from magnetickp import kpHam
+
+input_data = {
+    "Unitary": {
+        "C2z": (
+            Matrix([[1, 0], [0, -1]]),
+            Matrix([[-1, 0, 0], [0, -1, 0], [0, 0, 1]]),
+        )
+    }
+}
+
+result = kpHam(input_data).getkpHam(2)
+print(result["ham"])
+```
+
+## Release notes
+
+### v1.2.0 — 2026/8/20
+
+* Added the Python/Web interface for selecting magnetic space groups and corepresentations;
+* Added automatic local high-symmetry k-path calculation from the little co-group at the selected k point;
+* Added extensive help documentation for Mathematica and Python/Web;
+
+### v1.1.0 — 2025/10/31
+
+* Accelerated the momentum transformation matrix calculation;
+* Added the Reynolds solver;
+* Added support for the continuous spin rotation `CInfinity`;
+
+### v1.04 — 2023/10/31
+
+* Added `vaspEig`, `bandManipulateWithVASP`, and `fittingKP` for fitting k·p Hamiltonians.
+
+### v1.03 — 2023/03/26
+
+* Added the Python version.
+
+### v1.02 — 2022/10/15
+
+* Added `bandManipulate` and `bandplot` for plotting band structures;
+* Added support for MSGCorep v1.0.0.
+
+### v1.01 — 2022/06/30
+
+* Added support for one- and two-dimensional k·p Hamiltonians.

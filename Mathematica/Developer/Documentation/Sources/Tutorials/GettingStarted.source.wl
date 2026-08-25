@@ -1,0 +1,71 @@
+Notebook[{Cell["Getting Started with MagneticKP", "Title"], Cell["This tutorial shows the shortest complete workflow: \
+load MagneticKP, enter symmetry data, construct a Hamiltonian, and inspect its bands.", "Text"],
+  Cell["Load MagneticKP", "Section"], Cell["Load the package after installing the MagneticKP paclet:", "Text"],
+  Cell[BoxData["Needs[\"MagneticKP`\"]"], "Input"], Cell["Enter symmetry data", "Section"],
+  Cell["For each symmetry operation, supply its representation matrix and its action on momentum. Put unitary \
+operations under \"Unitary\" and add \"Antiunitary\" only when needed:", "Text"],
+  Cell[BoxData["input = <|\n  \"Unitary\" -> <|\n    \"C2z\" -> {\n      {{0, 1}, {-1, 0}},\n      {-kx, -ky, kz}\n    \
+},\n    \"Inversion\" -> {\n      {{1, 0}, {0, -1}},\n      {-kx, -ky, -kz}\n    }\n  |>\n|>;"], "Input"],
+  Cell["Construct the Hamiltonian", "Section"], Cell["Use an integer order to include every order from zero through \
+that value. The returned Association keeps the Hamiltonian and basic summary data together:", "Text"],
+  Cell[BoxData["result = kpHam[1, input];\nKeys[result]"], "Input"],
+  Cell[BoxData[RowBox[{"{", RowBox[{"\"ham\"", ",", "\"korder\"", ",", "\"dim\"", ",", "\"NumberOfParameters\""}],
+      "}"}]], "Output"], Cell["Extract the matrix from the \"ham\" entry:", "Text"],
+  Cell[BoxData["ham = result[\"ham\"];\nMatrixForm[ham]"], "Input"],
+  Cell[BoxData[TagBox[RowBox[{"(", "⁠", GridBox[{{SubscriptBox["e", "1"],
+          RowBox[{RowBox[{RowBox[{"-", "kx"}], " ", SubscriptBox["t", "1"]}], "-",
+            RowBox[{"ky", " ", SubscriptBox["t", "2"]}], "+", RowBox[{"", " ", "kz", " ",
+              SubscriptBox["t", "3"]}]}]}, {RowBox[{RowBox[{RowBox[{"-", "kx"}], " ", SubscriptBox["t", "1"]}], "-",
+            RowBox[{"ky", " ", SubscriptBox["t", "2"]}], "-", RowBox[{"", " ", "kz", " ",
+              SubscriptBox["t", "3"]}]}], SubscriptBox["e", "1"]}}, RowSpacings -> 1, ColumnSpacings -> 1,
+        RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}],
+     Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]], "Output"], Cell["Inspect model bands", "Section"],
+  Cell["Define a labeled momentum path and use bandManipulate while choosing parameter values:", "Text"],
+  Cell[BoxData["path = {\n  {{{0, 0, 0}, {1/3, 0, 0}}, {\"G\", \"X\"}},\n  {{{0, 0, 0}, {0, 1/3, 0}}, {\"G\", \
+\"Y\"}},\n  {{{0, 0, 0}, {0, 0, 1/3}}, {\"G\", \"Z\"}}\n};\nbandManipulate[path, 40, ham, \"PlotRange\" -> {-2, 2}]"],
+   "Input"], Cell[BoxData[DynamicBox[Uncompress["1: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"], SingleEvaluation -> True,
+     TrackedSymbols :> {}]], "Output"], Cell["Use representation databases", "Section"],
+  Cell["When representation matrices are available from MSGCorep or SpaceGroupIrep, interfaceRep prepares the same \
+input format automatically:", "Text"],
+  Cell[
+   BoxData[
+    "Needs[\"MSGCorep`\"];\ninput = interfaceRep[{13, 65}, \"B\", {2}];\n{input[\"lable\"], input[\"GroupInput\"]}"],
+   "Input"], Cell[BoxData[RowBox[{"{", RowBox[{RowBox[{"{", "\"\\!\\(\\*SubscriptBox[\\(B\\), \\(2\\)]\\)\"", "}"}],
+        ",", "\"Generators\""}], "}"}]], "Output"], Cell["Next steps", "Section"],
+  Cell[TextData[{"See ", ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"],
+     " for all construction options, ", ButtonBox["bandplot", BaseStyle -> "Link",
+      ButtonData -> "paclet:MagneticKP/ref/bandplot"], " for a fixed publication-style band plot, and ",
+     ButtonBox["vaspEig", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/vaspEig"], " with ",
+     ButtonBox["fittingKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/fittingKP"],
+     " for fitting to VASP data."}], "Text"],
+  Cell[CellGroupData[{Cell["History", "HistorySection"],
+     Cell[TextData[{"New in: ", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | Modified in: ",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | Obsolete in: ", Cell[" ", "HistoryData",
+         CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["Categorization", "CategorizationSection"], Cell["Tech Note", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/tutorial/GettingStarted",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["Keywords", "KeywordsSection"], Cell["getting started", "Keywords"],
+     Cell["k.p Hamiltonian", "Keywords"], Cell["symmetry input", "Keywords"], Cell["band plot", "Keywords"]},
+    Closed]]}, TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "Getting Started with MagneticKP",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "TechNotePageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

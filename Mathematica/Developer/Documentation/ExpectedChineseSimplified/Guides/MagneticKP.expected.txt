@@ -1,0 +1,4 @@
+MagneticKP 用于构造满足对称性要求的 k.p 哈密顿量
+构造 k.p 模型
+能带与参数拟合
+MagneticKP 入门

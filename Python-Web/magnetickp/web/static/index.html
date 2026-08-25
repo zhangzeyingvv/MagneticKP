@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      id="metaDescription"
+      name="description"
+      content="MagneticKP：从幺正、反幺正和连续自旋对称性构造 k·p 哈密顿量。"
+    />
+    <title>MagneticKP · 对称性约束的 k·p 模型</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="vendor/katex/katex.min.css?v=0.18.4" />
+    <link rel="stylesheet" href="styles.css?v=1.2.0-12" />
+    <script src="vendor/katex/katex.min.js?v=0.18.4" defer></script>
+    <script src="app.js?v=1.2.0-18" defer></script>
+  </head>
+  <body>
+    <div class="page-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="MagneticKP 首页" data-i18n-aria="brandAria">
+        <span class="brand-mark">k·p</span>
+        <span>
+          <strong>MagneticKP</strong>
+          <small data-i18n="brandTagline">SYMMETRY MODEL BUILDER</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="help-link" href="help/" data-i18n="helpLink">帮助</a>
+        <div class="runtime-badge" id="runtimeBadge" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="runtimeText">正在连接计算引擎</span>
+        </div>
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to English">EN</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">REPRESENTATION → HAMILTONIAN</p>
+          <h1>
+            <span data-i18n="heroLead">输入对称性，</span>
+            <em data-i18n="heroEmphasis">构造完整的 k·p 模型。</em>
+          </h1>
+          <p data-i18n="heroDescription">从表示矩阵和动量变换直接求公共不变子空间；支持幺正、反幺正、反对称以及内部连续 C∞ 自旋旋转。</p>
+        </div>
+
+        <form class="solver-card" id="solverForm">
+          <div class="card-heading">
+            <div>
+              <p class="step-label" data-i18n="defineStep">01 · 定义</p>
+              <h2 data-i18n="defineHeading">设置模型空间</h2>
+            </div>
+            <button class="text-button" id="resetButton" type="button" data-i18n="reset">恢复示例</button>
+          </div>
+
+          <div class="input-mode-tabs" id="inputModeTabs" role="tablist" aria-label="Input mode">
+            <button class="input-mode-tab active" id="catalogModeButton" type="button" role="tab" aria-selected="true" data-mode="catalog" data-i18n="catalogMode">空间群目录</button>
+            <button class="input-mode-tab" id="manualModeButton" type="button" role="tab" aria-selected="false" data-mode="manual" data-i18n="manualMode">手动输入矩阵</button>
+          </div>
+
+          <section class="catalog-panel" id="catalogPanel">
+            <p class="catalog-introduction" data-i18n="catalogIntroduction">从 MSGCorep 选择空间群、磁群、k 点与小群共表示，自动构造表示矩阵和动量作用。</p>
+            <div class="catalog-grid">
+              <div>
+                <label for="catalogSpaceGroup" data-i18n="spaceGroupLabel">空间群</label>
+                <select id="catalogSpaceGroup"></select>
+              </div>
+              <div>
+                <label for="catalogMagneticGroup" data-i18n="magneticGroupLabel">磁空间群</label>
+                <select id="catalogMagneticGroup"></select>
+              </div>
+              <div>
+                <label for="catalogBzVariant" data-i18n="bzVariantLabel">Brillouin 区</label>
+                <select id="catalogBzVariant"></select>
+              </div>
+              <div>
+                <label for="catalogKPoint" data-i18n="kPointLabel">k 点 / k 线</label>
+                <select id="catalogKPoint"></select>
+              </div>
+              <div>
+                <label for="catalogRepresentationFamily" data-i18n="representationFamilyLabel">表示类型</label>
+                <select id="catalogRepresentationFamily">
+                  <option value="single" data-i18n="singleValued">单值表示</option>
+                  <option value="double" data-i18n="doubleValued" selected>双值表示（SOC）</option>
+                </select>
+              </div>
+              <div>
+                <label for="catalogCoordinateBasis" data-i18n="coordinateBasisLabel">动量坐标</label>
+                <select id="catalogCoordinateBasis">
+                  <option value="cartesian" data-i18n="cartesianBasis">笛卡尔坐标</option>
+                  <option value="fractional" data-i18n="fractionalBasis">分数坐标</option>
+                </select>
+              </div>
+            </div>
+            <div class="catalog-coordinate">
+              <span data-i18n="coordinateLabel">选中的 k 坐标</span>
+              <strong id="catalogCoordinateMath">—</strong>
+              <div class="catalog-parameter-fields" id="catalogParameterFields"></div>
+            </div>
+            <div class="catalog-generators-heading">
+              <div>
+                <label data-i18n="generatorsLabel">生成元对 k 的作用</label>
+                <p data-i18n="generatorsHint">与求解器实际使用的最小小群生成元一致。</p>
+              </div>
+              <span id="catalogGeneratorCount">—</span>
+            </div>
+            <div class="catalog-generator-list" id="catalogGeneratorList"></div>
+            <div class="corepresentation-heading">
+              <div>
+                <label data-i18n="corepresentationsLabel">小群共表示</label>
+                <p data-i18n="corepresentationsHint">可多选并设置重数，程序自动构造直和表示。</p>
+              </div>
+              <span id="catalogDimension">H: —</span>
+            </div>
+            <div class="corepresentation-list" id="corepresentationList"></div>
+            <div class="catalog-representations-heading">
+              <div>
+                <label data-i18n="representationMatricesLabel">选中共表示的生成元矩阵</label>
+                <p data-i18n="representationMatricesHint">展示各不可约块；重数表示该块在直和中重复的次数。</p>
+              </div>
+            </div>
+            <div class="catalog-representation-matrices" id="catalogRepresentationMatrices"></div>
+            <div class="catalog-convert-row">
+              <button class="secondary-button catalog-convert-button" id="convertCatalogToManualButton" type="button">
+                <span data-i18n="convertToManual">转为手动输入矩阵</span><span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </section>
+
+          <div class="settings-grid">
+            <div class="manual-only">
+              <label for="hilbertDimension" data-i18n="hilbertDimension">哈密顿量阶数</label>
+              <input id="hilbertDimension" type="number" min="1" max="12" value="2" />
+            </div>
+            <div class="manual-only">
+              <label id="spatialDimensionLabel" data-i18n="spatialDimension">动量空间维数</label>
+              <div class="spatial-dimension-tabs" id="spatialDimensionTabs" role="radiogroup" aria-labelledby="spatialDimensionLabel">
+                <button class="dimension-tab" type="button" role="radio" aria-checked="true" data-dimension="3">
+                  <strong>3D</strong><span class="dimension-tab-math" data-latex="k_x,\,k_y,\,k_z" data-fallback="kx, ky, kz"></span>
+                </button>
+                <button class="dimension-tab" type="button" role="radio" aria-checked="false" data-dimension="2">
+                  <strong>2D</strong><span class="dimension-tab-math" data-latex="k_x,\,k_y" data-fallback="kx, ky"></span>
+                </button>
+                <button class="dimension-tab" type="button" role="radio" aria-checked="false" data-dimension="1">
+                  <strong>1D</strong><span class="dimension-tab-math" data-latex="k_z" data-fallback="kz"></span>
+                </button>
+              </div>
+              <select id="spatialDimension" hidden aria-hidden="true" tabindex="-1">
+                <option value="3">3D</option><option value="2">2D</option><option value="1">1D</option>
+              </select>
+            </div>
+            <div>
+              <label for="orderInput" data-i18n="orderLabel">截止阶数</label>
+              <input id="orderInput" type="number" min="0" max="6" value="1" />
+            </div>
+            <div>
+              <label for="methodInput" data-i18n="methodLabel">求解方法</label>
+              <select id="methodInput">
+                <option value="automatic" data-i18n="methodAutomatic">Automatic · 推荐</option>
+                <option value="iterative" data-i18n="methodIterative">Iterative · 生成元迭代</option>
+                <option value="reynolds" data-i18n="methodReynolds">Reynolds · 有限群平均</option>
+              </select>
+            </div>
+          </div>
+
+          <details class="advanced-settings">
+            <summary>
+              <span><strong data-i18n="advancedTitle">高级求解设置</strong><small data-i18n="advancedDescription">Reynolds 群输入与闭包上限</small></span>
+              <b aria-hidden="true">+</b>
+            </summary>
+            <div class="settings-grid advanced-grid">
+              <div class="manual-only">
+                <label for="groupInput" data-i18n="groupInputLabel">离散群输入</label>
+                <select id="groupInput">
+                  <option value="generators" data-i18n="groupGenerators">Generators · 生成元</option>
+                  <option value="elements" data-i18n="groupElements">Elements · 全部群元</option>
+                </select>
+              </div>
+              <div>
+                <label for="maxGroupOrder" data-i18n="maxGroupOrder">最大群阶</label>
+                <input id="maxGroupOrder" type="number" min="1" max="4096" value="512" />
+              </div>
+            </div>
+          </details>
+
+          <div id="manualSymmetryPanel">
+          <div class="operations-heading">
+            <div>
+              <p class="step-label" data-i18n="operationsStep">02 · 对称性</p>
+              <h2 data-i18n="operationsHeading">表示与动量变换</h2>
+            </div>
+            <span class="operation-count" id="operationCount">1 个操作</span>
+          </div>
+
+          <div class="operation-list" id="operationList"></div>
+
+          <div class="add-operation-row">
+            <button class="secondary-button" id="addDiscreteButton" type="button">
+              <span aria-hidden="true">＋</span><span data-i18n="addDiscrete">添加离散操作</span>
+            </button>
+            <button class="secondary-button continuous-button" id="addContinuousButton" type="button">
+              <span data-i18n="addContinuous">添加 C∞ 操作</span>
+            </button>
+          </div>
+
+          <div class="syntax-note">
+            <strong data-i18n="syntaxTitle">输入语法</strong>
+            <span data-i18n="syntaxDescription">允许整数、有理数、I、pi、sqrt、exp、sin、cos、tan；乘法请写 *。连续表示只允许参数 theta。</span>
+          </div>
+          </div>
+
+          <button class="primary-button" id="solveButton" type="submit">
+            <span data-i18n="solve">构造 Hamiltonian</span>
+            <span class="button-arrow" aria-hidden="true">→</span>
+          </button>
+        </form>
+      </section>
+
+      <section class="example-library" aria-labelledby="examplesHeading">
+        <div class="section-heading">
+          <div>
+            <p class="step-label" data-i18n="examplesStep">示例库</p>
+            <h2 id="examplesHeading" data-i18n="examplesHeading">从已验证模型开始</h2>
+          </div>
+          <p data-i18n="examplesDescription">点击卡片会替换上面的输入；包含连续对称性约化、离散旋转与反幺正约束。</p>
+        </div>
+        <div class="example-grid" id="exampleGrid"></div>
+      </section>
+
+      <section class="error-panel" id="errorPanel" role="alert" hidden>
+        <strong data-i18n="errorHeading">无法完成计算</strong>
+        <p id="errorMessage"></p>
+      </section>
+
+      <section class="results" id="resultsSection" aria-live="polite" hidden>
+        <div class="section-heading result-heading">
+          <div>
+            <p class="step-label" data-i18n="resultsStep">03 · 结果</p>
+            <h2 data-i18n="resultsHeading">对称性允许的 Hamiltonian</h2>
+          </div>
+          <div class="result-actions">
+            <button class="secondary-button" id="downloadButton" type="button" data-i18n="downloadJson">下载 JSON</button>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <article><span data-i18n="metricParameters">独立参数</span><strong id="parameterCount">—</strong></article>
+          <article><span data-i18n="metricDimension">矩阵维数</span><strong id="resultDimension">—</strong></article>
+          <article><span data-i18n="metricOrders">包含阶数</span><strong id="resultOrders">—</strong></article>
+          <article><span data-i18n="metricTime">计算时间</span><strong id="elapsedTime">—</strong></article>
+        </div>
+
+        <article class="result-card hamiltonian-card">
+          <div class="result-card-heading">
+            <div><span class="result-index">H</span><div><strong>H(k)</strong><small data-i18n="hamiltonianDescription">累计到指定阶数的完整结果</small></div></div>
+            <div class="hamiltonian-heading-actions">
+              <div class="hamiltonian-view-tabs" role="tablist" aria-label="Hamiltonian view">
+                <button class="hamiltonian-view-tab active" id="formulaViewButton" type="button" role="tab" aria-selected="true" data-view="formula" data-i18n="formulaMode">公式</button>
+                <button class="hamiltonian-view-tab" id="texViewButton" type="button" role="tab" aria-selected="false" data-view="tex">TeX</button>
+              </div>
+              <button class="secondary-button hamiltonian-tex-button" id="copyLatexButton" type="button" data-i18n="copyLatex">复制 LaTeX</button>
+            </div>
+          </div>
+          <div class="math-output" id="hamiltonianMath"></div>
+          <pre class="hamiltonian-tex-output" id="latexOutput" hidden></pre>
+        </article>
+
+        <div class="result-columns">
+          <article class="result-card">
+            <div class="result-card-heading">
+              <div><span class="result-index">C</span><div><strong data-i18n="parametersHeading">自由参数</strong><small data-i18n="parametersDescription">每个参数对应一个不变量方向</small></div></div>
+            </div>
+            <div class="parameter-list" id="parameterList"></div>
+          </article>
+          <article class="result-card">
+            <div class="result-card-heading">
+              <div><span class="result-index">Δ</span><div><strong data-i18n="diagnosticsHeading">逐阶诊断</strong><small data-i18n="diagnosticsDescription">环境维数与不变子空间维数</small></div></div>
+            </div>
+            <div class="diagnostic-list" id="diagnosticList"></div>
+          </article>
+        </div>
+
+        <article class="result-card band-card">
+          <div class="result-card-heading">
+            <div><span class="result-index">E</span><div><strong data-i18n="bandHeading">交互能带</strong><small data-i18n="bandDescription">浏览器本地计算；拖动参数不会重新调用服务器</small></div></div>
+            <span class="browser-badge" data-i18n="browserComputed">LOCAL · 即时</span>
+          </div>
+          <div class="band-layout">
+            <div class="band-controls">
+              <label for="bandPathInput" data-i18n="bandPathLabel">高对称路径</label>
+              <input id="bandPathInput" type="text" spellcheck="false" />
+              <p class="field-hint" id="bandPathHint" data-i18n="bandPathHint">按路径段输入：起点:坐标 -&gt; 终点:坐标；支持 1/3 等精确分数。</p>
+              <div class="band-setting-row">
+                <div>
+                  <label for="bandPointsInput" data-i18n="bandPointsLabel">每段采样点</label>
+                  <input id="bandPointsInput" type="number" min="8" max="240" value="100" />
+                </div>
+                <button class="secondary-button" id="resetBandButton" type="button" data-i18n="resetBand">恢复默认路径</button>
+              </div>
+              <div class="parameter-sliders" id="parameterSliders"></div>
+            </div>
+            <div class="band-plot-wrap">
+              <svg id="bandPlot" viewBox="0 0 760 430" role="img" aria-label="k·p band structure"></svg>
+              <p class="band-error" id="bandError" hidden></p>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <span>MagneticKP <b id="footerVersion">1.2.0</b></span>
+      <span data-i18n="footerNote">Exact symbolic symmetry constraints · Powered by SymPy</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+Notebook[{Cell[CellGroupData[{Cell["bandManipulate", "ObjectName"],
+     Cell[TextData[{Cell["   ", "ModInfo"], Cell[BoxData["bandManipulate[path, n, ham]"], "InlineFormula"], "  ",
+        "creates an interactive band plot with controls for the free parameters in ham."}], "Usage"],
+     Cell["Each path segment has the form {{k1, k2}, {label1, label2}} and n gives the sampling count per segment.",
+      "Notes"], Cell["The momentum coordinates in path are multiplied by 2 Pi before substitution into ham.", "Notes"],
+     Cell[BoxData[GridBox[{{Cell["      ", "TableRowIcon"], "\"PlotRange\"", "All",
+          Cell["sets the displayed energy range.", "TableText"]}, {Cell["      ", "TableRowIcon"],
+          "\"ManipulateRange\"", "1", Cell["sets a symmetric slider range, or may be given explicitly as {min, max}.",
+           "TableText"]}}, GridBoxAlignment -> {"Columns" -> {{Left}}}]], "3ColumnTableMod"]}, Open]],
+  Cell[CellGroupData[{Cell["Examples Initialization", "ExamplesInitializationSection"],
+     Cell[BoxData["Needs[\"MagneticKP`\"]"], "ExampleInitialization"]}, Open]],
+  Cell[CellGroupData[{Cell["Basic Examples", "PrimaryExamplesSection"],
+     Cell["Construct a two-band Hamiltonian with kpHam, then explore it with interactive parameter controls:",
+      "ExampleText"], Cell[BoxData["input = <|\n  \"Unitary\" -> <|\n    \"C2z\" -> {\n      {{0, 1}, {-1, 0}},\n      \
+{-kx, -ky, kz}\n    },\n    \"Inversion\" -> {\n      {{1, 0}, {0, -1}},\n      {-kx, -ky, -kz}\n    }\n  |>\n|>;\nham \
+= kpHam[1, input][\"ham\"];\npath = {{{{0, 0, 0}, {1/3, 0, 0}}, {\"G\", \"X\"}}};\nbandManipulate[path, 20, ham, \
+\"PlotRange\" -> {-2, 2}]"], "Input"], Cell[BoxData[DynamicBox[Uncompress["1:eJztWE2IHEUU7p1JdOMGdzVG1EVhQx+ChxA35JSA7m\
+Y2ZIKbXWYmgdy2Zrpmt5iaqqaret1ZQU96ETx48aaeFDyo6EXiQXLyJxAQzEUUPCj+IGERRZSQtV737HZXT3XX7AaWgO5htqvre6++9+rVe/V6qslr7ZLjO\
+OIe9dNAy7N8rb0PxqPqpy57FMMbGIgJ9VPpMdQlrXnuhfHMOMyAwLNEyFhTGSSxFPvVf9x6ynWJenAG52Th3HTB3Anj3P1gQc/HAsslscKfc92IWCMIsQ58\
+OAVsct7poqAD9F237eSbY5JSfsCuWweBecxC8WAKgxjpIskDpVXT80AGs4oUhIwUmqOcDuvcp14dCZkkkmLviA4fT1vv45ZQ6+7XrNmnjcraaGRrdI5Tz7h\
+zB2CdsClaAfGlADyOSJNN9ZeiD0pqKjjEmHo4w5kMOI14wXheGeyHFNyyQzrZYBmkI/eWzrSVTmkv6Zyw0infCZ0CAkn6mA2l5CyK0rk1nweygiSKwUByMS\
+AsG4Uai+JAS6JyOCmZSMmdSJUSqenhpcqJlNoKMZX2H16qhF1/qbFCRFVc4HKm72nLHsDEBc5wQZYj6yotRHxmQslVuiEtHT2RQoe+p7gYU2c6bxFGZEUtq\
+xSDPWcRFQX5U3SIX00k9IQLkdCvGFArgKd4TPdM8qgQWMR7dhAWkoh5KPDO8qAbaxvrO6qCKephrw7qLqGAoKZynimu9roQZQkeSjaU4iCh6gxSzYrCLi/I\
+lbTUWFrKVOzyy1pB7copWeYqZahJprpjilFTIOaFXX58mZ0FTpnlXi/OUqN9Fy1S3s9UB6KgREz4fCuUYfsa4NcYARrnyDJmq4iGytcjW4rm4IUim8RzDfs\
+UtfAMTR1fPZUlo7xUlqTTRRqKFCPSxdlhlLIFvOusFac6k2DmXaynV5z82mVdBmaqseR6cQLM+ODuttKk5w4tz93vbb+c54T9N0pg5sqgl7r0RkcBgoJYS8\
+d0OUlvZwZdykGvG9GDMRpPtA+b4xZGgdP/G3zIAH/86PT4zetXnh4S+KUd+Okb718+Nvm1HfjxtRe+++X6N3bg5Vtvf1C7+r0deOO1V4Pjkz/YgadOvj55M\
+PxpWI6/2oEnm+03Pzt60w7kGy990bi6YQe+90nv3TPsdzvwt5e7r0xP/mEHPllDdOrzP+1A8vjF+YnwLzvwnZ/PHduc+nvY6PnHDnRfPL7x7fO37MDmefer\
+a0dv24FvHX7kwys3NofdGecZA1A/rJBHoFDXEFvG+tEkt6FXMRzwLZno60SUcGZVRe7kX6Tq6lpC2qSlrseciUxXXM4f7bYPtqncRS9rV7njftSucnc95f+\
+doFYGjVF5rxov+HE4OoNuMAVxBbdRSGWB1PYBgbt2nbBlivvXV5DQO7PMCgJaFe3b3qX4ImwnF38WxHB9J4iS9WS1pHfNisC9/6Lqi9SpxV7S4YykFzM0ER\
+kzHwUze6y1EnDGQ1EdZJBv70TEQKDV/PXNzYlZ3UOROo83siaV8k3Kb9r6XxXh9CTtccb40cjrPuWwvG7rNiZuo1VoLrAq80OZ6ucjU5/QFliqMokDP8Aye\
+RcdnH8BTioCCQ=="], SingleEvaluation -> True, TrackedSymbols :> {}]], "Output"]}, Open]],
+  Cell[CellGroupData[{Cell["Related Functions", "SeeAlsoSection"],
+     Cell[TextData[{ButtonBox["bandplot", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/bandplot"],
+        " ◼ ", ButtonBox["bandManipulateWithVASP", BaseStyle -> "Link",
+         ButtonData -> "paclet:MagneticKP/ref/bandManipulateWithVASP"], " ◼ ",
+        ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"]}], "SeeAlso"]}, Open]],
+  Cell[CellGroupData[{Cell["Related Guides", "MoreAboutSection"],
+     Cell[TextData[{ButtonBox["MagneticKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/guide/MagneticKP"]}],
+      "MoreAbout"]}, Open]], Cell[CellGroupData[{Cell["Related Tutorials", "TutorialsSection"],
+     Cell[TextData[{ButtonBox["Getting Started with MagneticKP", BaseStyle -> "Link",
+         ButtonData -> "paclet:MagneticKP/tutorial/GettingStarted"]}], "Tutorials"]}, Open]],
+  Cell[CellGroupData[{Cell["History", "HistorySection"],
+     Cell[TextData[{"New in: ", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | Modified in: ",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | Obsolete in: ", Cell[" ", "HistoryData",
+         CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["Categorization", "CategorizationSection"], Cell["Symbol", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/ref/bandManipulate",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["Keywords", "KeywordsSection"], Cell["band plot", "Keywords"],
+     Cell["interactive", "Keywords"], Cell["parameters", "Keywords"], Cell["momentum path", "Keywords"]}, Closed]]},
+ TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "bandManipulate",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

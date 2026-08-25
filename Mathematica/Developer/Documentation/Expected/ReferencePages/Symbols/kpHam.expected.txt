@@ -1,0 +1,3 @@
+kpHam
+constructs the symmetry-allowed k.p Hamiltonian through korder and returns its data in an Association.
+kpHam[

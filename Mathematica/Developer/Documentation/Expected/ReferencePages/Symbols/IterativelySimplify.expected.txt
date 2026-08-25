@@ -1,0 +1,3 @@
+IterativelySimplify
+constructs a symmetry-allowed k.p Hamiltonian with the default solver.
+IterativelySimplify[

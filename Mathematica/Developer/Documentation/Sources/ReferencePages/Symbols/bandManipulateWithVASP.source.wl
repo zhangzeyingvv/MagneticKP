@@ -1,0 +1,235 @@
+Notebook[{Cell[CellGroupData[{Cell["bandManipulateWithVASP", "ObjectName"],
+     Cell[TextData[{Cell["   ", "ModInfo"], Cell[BoxData["bandManipulateWithVASP[ham, eigdata]"], "InlineFormula"],
+        "  ", "interactively compares the eigenvalues of ham with imported VASP eigenvalues."}], "Usage"],
+     Cell["eigdata should be the result returned by vaspEig or data in the same {k, energies} form.", "Notes"],
+     Cell["The model bands are drawn in black and imported bands in red.", "Notes"],
+     Cell["When kpHam is constructed in fractional coordinates about a nonzero expansion point, shift its momentum \
+variables to the absolute fractional coordinates stored in EIGENVAL before comparing the bands.", "Notes"],
+     Cell[BoxData[GridBox[{{Cell["      ", "TableRowIcon"], "\"PlotRange\"", "All",
+          Cell["sets the displayed energy range.", "TableText"]}, {Cell["      ", "TableRowIcon"],
+          "\"ManipulateRange\"", "2 Pi",
+          Cell["sets a symmetric slider range, or may be given explicitly as {min, max}.", "TableText"]}},
+        GridBoxAlignment -> {"Columns" -> {{Left}}}]], "3ColumnTableMod"]}, Open]],
+  Cell[CellGroupData[{Cell["Examples Initialization", "ExamplesInitializationSection"],
+     Cell[BoxData["CompoundExpression[Needs[\"MagneticKP`\"], Needs[\"MSGCorep`\"]]"], "ExampleInitialization"]},
+    Open]], Cell[CellGroupData[{Cell["Basic Examples", "PrimaryExamplesSection"],
+     Cell["Inspect the corepresentations at K used by the original MagneticKP fitting example:", "ExampleText"],
+     Cell[BoxData["showMLGCorep[{156, 50}, {1/3, 1/3, 0}]"], "Input"],
+     Cell[BoxData[TagBox[GridBox[{{TagBox[GridBox[{{TemplateBox[{" ", "\" \"", "\"MSG \"", StyleBox[
+                  TemplateBox[{"156", "\".\"", "50"}, "RowDefault"], Bold, RGBColor[0, 0, 1], StripOnInput -> False],
+                 "\"(\"", StyleBox[TemplateBox[{"\"P\"", "\"3\"", "\"m\"", "\"1\"", TemplateBox[{"\"1\"", "\"′\""},
+                     "Superscript", SyntaxForm -> SuperscriptBox]}, "RowDefault"], Bold, RGBColor[0, 0, 1],
+                  StripOnInput -> False], "\"):  k-point name is \"", StyleBox["\"K\"", Bold, RGBColor[0, 0, 1],
+                  StripOnInput -> False], "\", for \"", TemplateBox[{",", "\",\"", "\"HexaPrim\""},
+                  "RowWithSeparators"]}, "RowWithSeparators"]}, {TemplateBox[{TemplateBox[{"\"▶  k=(\"",
+                   TemplateBox[{",", "\",\"", FractionBox["1", "3"], FractionBox["1", "3"], "0"}, "RowWithSeparators"],
+                   "\")\""}, "RowDefault"], "\" non-standard, \"", "\"\\!\\(\\*SubscriptBox[\\(k\\), \\(BC\\)]\\)\"",
+                 "\"=(\"", TemplateBox[{",", "\",\"", RowBox[{"-", FractionBox["1", "3"]}], FractionBox["2", "3"],
+                   "0"}, "RowWithSeparators"], "\")  [\"", SubscriptBox["\"σ\"", "\"v1\""], "\"]\"",
+                 "\"\\!\\(\\*SubscriptBox[\\(k\\), \\(BC\\)]\\)\"", "\" ⇔ k\""}, "RowDefault"]}},
+             GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> "Column", GridBoxItemSize ->
+              {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]},
+          {TagBox[GridBox[{{"\"Index\"", "", "", "1", "2", "3", "4", "5", "6"}, {"\"Element\"", "", "",
+               TemplateBox[{"\"{\"", "\"E\"", "\"|\"", TemplateBox[{"0", "0", "0"}, "RowDefault"], "\"}\""},
+                "RowDefault"], TemplateBox[{"\"{\"", TemplateBox[{"\"C\"", "\"3\"", "\"+\""}, "Subsuperscript",
+                  SyntaxForm -> SubsuperscriptBox], "\"|\"", TemplateBox[{"0", "0", "0"}, "RowDefault"], "\"}\""},
+                "RowDefault"], TemplateBox[{"\"{\"", TemplateBox[{"\"C\"", "\"3\"", "\"-\""}, "Subsuperscript",
+                  SyntaxForm -> SubsuperscriptBox], "\"|\"", TemplateBox[{"0", "0", "0"}, "RowDefault"], "\"}\""},
+                "RowDefault"], StyleBox[TemplateBox[{TemplateBox[{"\"{\"", SubscriptBox["\"σ\"", "\"v1\""], "\"|\"",
+                    TemplateBox[{"0", "0", "0"}, "RowDefault"], "\"}\""}, "RowDefault"], "\"′\""}, "Superscript",
+                 SyntaxForm -> SuperscriptBox], RGBColor[1, 0, 0], StripOnInput -> False], StyleBox[
+                TemplateBox[{TemplateBox[{"\"{\"", SubscriptBox["\"σ\"", "\"v2\""], "\"|\"", TemplateBox[
+                     {"0", "0", "0"}, "RowDefault"], "\"}\""}, "RowDefault"], "\"′\""}, "Superscript",
+                 SyntaxForm -> SuperscriptBox], RGBColor[1, 0, 0], StripOnInput -> False], StyleBox[
+                TemplateBox[{TemplateBox[{"\"{\"", SubscriptBox["\"σ\"", "\"v3\""], "\"|\"", TemplateBox[
+                     {"0", "0", "0"}, "RowDefault"], "\"}\""}, "RowDefault"], "\"′\""}, "Superscript",
+                 SyntaxForm -> SuperscriptBox], RGBColor[1, 0, 0], StripOnInput -> False]},
+              {TagBox[GridBox[{{"\"Rotation\""}, {"\"matrix\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}},
+                 DefaultBaseStyle -> "Column", GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}],
+                "Column"], "", "", TagBox[RowBox[{"(", "⁠", GridBox[{{"1", "0", "0"}, {"0", "1", "0"},
+                    {"0", "0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{"0", RowBox[{"-", "1"}], "0"}, {"1", RowBox[{"-", "1"}], "0"},
+                    {"0", "0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", "1"}], "1", "0"}, {RowBox[{"-", "1"}], "0", "0"},
+                    {"0", "0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", "1"}], "1", "0"}, {"0", "1", "0"}, {"0", "0", "1"}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"1", "0", "0"}, {"1", RowBox[{"-", "1"}], "0"}, {"0", "0", "1"}}, RowSpacings -> 1,
+                   ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}],
+                Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[
+                   {{"0", RowBox[{"-", "1"}], "0"}, {RowBox[{"-", "1"}], "0", "0"}, {"0", "0", "1"}}, RowSpacings -> 1,
+                   ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}],
+                Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]}, {TagBox[GridBox[{{"\"Spin(↓↑)\""},
+                  {"\"rotation\""}, {"\"matrix\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle ->
+                  "Column", GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}], "Column"], "", "",
+               TagBox[RowBox[{"(", "⁠", GridBox[{{"1", "0"}, {"0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{RowBox[{FractionBox["1", "2"], "+",
+                       FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}], "0"}, {"0", RowBox[{FractionBox["1",
+                        "2"], "-", FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}]}}, RowSpacings -> 1,
+                   ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}],
+                Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[
+                   {{RowBox[{FractionBox["1", "2"], "-", FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}], "0"},
+                    {"0", RowBox[{FractionBox["1", "2"], "+", FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}]}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"0", RowBox[{"-", "1"}]}, {"1", "0"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{"0", RowBox[{RowBox[{"-", FractionBox[
+                          "1", "2"]}], "+", FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}]},
+                    {RowBox[{FractionBox["1", "2"], "+", FractionBox[RowBox[{"", " ", SqrtBox["3"]}], "2"]}], "0"}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"0", RowBox[{RowBox[{"-", FractionBox["1", "2"]}], "-", FractionBox[RowBox[{"", " ",
+                          SqrtBox["3"]}], "2"]}]}, {RowBox[{FractionBox["1", "2"], "-", FractionBox[RowBox[
+                         {"", " ", SqrtBox["3"]}], "2"]}], "0"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]]}, {"1", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(1\\)]\\) \"", "\"a\"", "1",
+               "1", "1", "1", "1", "1"}, {"2", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(2\\)]\\) \"", "\"a\"", "1",
+               SuperscriptBox["", RowBox[{"-", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]}]],
+               SuperscriptBox["", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]], "1", SuperscriptBox[
+                "", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]], SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]}]]},
+              {"3", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(3\\)]\\) \"", "\"a\"", "1", SuperscriptBox["",
+                FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]], SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]}]], "1", SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]}]], SuperscriptBox["",
+                FractionBox[RowBox[{"2", " ", "", " ", "π"}], "3"]]},
+              {"4", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(4\\)]\\) \"", "\"a\"", "1", SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"", " ", "π"}], "3"]}]], SuperscriptBox["",
+                FractionBox[RowBox[{"", " ", "π"}], "3"]], "1", SuperscriptBox["", FractionBox[
+                 RowBox[{"", " ", "π"}], "3"]], SuperscriptBox["", RowBox[{"-", FractionBox[
+                   RowBox[{"", " ", "π"}], "3"]}]]}, {"5", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(5\\)]\\) \"",
+               "\"a\"", "1", SuperscriptBox["", FractionBox[RowBox[{"", " ", "π"}], "3"]], SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"", " ", "π"}], "3"]}]], "1", SuperscriptBox["",
+                RowBox[{"-", FractionBox[RowBox[{"", " ", "π"}], "3"]}]], SuperscriptBox["",
+                FractionBox[RowBox[{"", " ", "π"}], "3"]]},
+              {"6", "\" \\!\\(\\*SubscriptBox[\\(K\\), \\(6\\)]\\) \"", "\"a\"", "1", RowBox[{"-", "1"}], RowBox[
+                {"-", "1"}], "1", RowBox[{"-", "1"}], RowBox[{"-", "1"}]}}, GridBoxAlignment ->
+              {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, AutoDelete -> False, GridBoxBackground ->
+              {"Columns" -> {{None}}, "Rows" -> {{None}}, "ItemsIndexed" -> {{{1, 4}, {1, -1}} -> RGBColor[1., 1.,
+                   0.9], {{2, 2}, {1, -1}} -> RGBColor[1., 1., 0.9], {}, {{5, 7}, {1, -1}} -> RGBColor[0.95, 1., 0.95],
+                 {}, {{8, -1}, {1, -1}} -> RGBColor[0.95, 0.95, 1.]}}, GridBoxDividers -> {"Columns" ->
+                {{Directive[Thickness[Tiny], GrayLevel[0.8]]}}, "ColumnsIndexed" -> {1 -> Directive[GrayLevel[0],
+                   Thickness[2]], 4 -> Directive[GrayLevel[0], Thickness[2]], -1 -> Directive[GrayLevel[0],
+                   Thickness[2]], 2 -> Directive[Thickness[Tiny], GrayLevel[0.8]], 3 -> Directive[Thickness[Tiny],
+                   GrayLevel[0.8]]}, "Rows" -> {{Directive[Thickness[Tiny], GrayLevel[0.8]]}}, "RowsIndexed" ->
+                {1 -> Directive[GrayLevel[0], Thickness[2]], 5 -> Directive[GrayLevel[0], Thickness[2]],
+                 8 -> Directive[GrayLevel[0], Thickness[2]], -1 -> Directive[GrayLevel[0], Thickness[2]],
+                 2 -> Directive[Thickness[Tiny], GrayLevel[0.8]]}}, GridBoxFrame -> {"Columns" -> {{True}}, "Rows" ->
+                {{True}}}, GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}], "Grid"]}},
+         GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> "Column",
+         GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]], "Output"],
+     Cell["Select corepresentations 2 and 3 in fractional coordinates and construct the second-order k.p Hamiltonian:",
+      "ExampleText"], Cell[BoxData["input = interfaceRep[{156, 50}, \"K\", {2, 3}, \"CartesianCoordinates\" -> \
+False];\nham = kpHam[2, input][\"ham\"];\nMatrixForm[ham]"], "Input"],
+     Cell[BoxData[TagBox[RowBox[{"(", "⁠", GridBox[{{RowBox[{SubscriptBox["e", "1"], "+", SubscriptBox["e", "2"],
+               "+", RowBox[{RowBox[{"(", RowBox[{SuperscriptBox["kx", "2"], "+", RowBox[{"kx", " ", "ky"}], "+",
+                     SuperscriptBox["ky", "2"]}], ")"}], " ", SubscriptBox["r", "1"]}], "+", RowBox[
+                {RowBox[{"(", RowBox[{SuperscriptBox["kx", "2"], "+", RowBox[{"kx", " ", "ky"}], "+", SuperscriptBox[
+                      "ky", "2"]}], ")"}], " ", SubscriptBox["r", "3"]}], "+", RowBox[{SuperscriptBox["kz", "2"], " ",
+                 SubscriptBox["r", "5"]}], "+", RowBox[{SuperscriptBox["kz", "2"], " ", SubscriptBox["r", "6"]}]}],
+             RowBox[{RowBox[{RowBox[{"(", RowBox[{RowBox[{"-", FractionBox[SuperscriptBox["kx", "2"], "2"]}], "-",
+                     RowBox[{FractionBox["1", "2"], " ", "", " ", SqrtBox["3"], " ", SuperscriptBox["kx", "2"]}],
+                     "+", RowBox[{"kx", " ", "ky"}], "-", RowBox[{"", " ", SqrtBox["3"], " ", "kx", " ", "ky"}],
+                     "+", SuperscriptBox["ky", "2"]}], ")"}], " ", SubscriptBox["r", "2"]}], "+", RowBox[
+                {RowBox[{"(", RowBox[{FractionBox[RowBox[{"kx", " ", "kz"}], "2"], "+", RowBox[{FractionBox["1", "2"],
+                       " ", "", " ", SqrtBox["3"], " ", "kx", " ", "kz"}], "+", RowBox[{"ky", " ", "kz"}]}], ")"}],
+                 " ", SubscriptBox["r", "4"]}], "+", RowBox[{RowBox[{"(", RowBox[{RowBox[{"-", FractionBox[
+                        RowBox[{"", " ", "kx"}], "2"]}], "+", FractionBox[RowBox[{SqrtBox["3"], " ", "kx"}], "2"],
+                     "-", RowBox[{"", " ", "ky"}]}], ")"}], " ", SubscriptBox["t", "1"]}]}]},
+            {RowBox[{RowBox[{RowBox[{"(", RowBox[{RowBox[{"-", FractionBox[SuperscriptBox["kx", "2"], "2"]}], "+",
+                     RowBox[{FractionBox["1", "2"], " ", "", " ", SqrtBox["3"], " ", SuperscriptBox["kx", "2"]}],
+                     "+", RowBox[{"kx", " ", "ky"}], "+", RowBox[{"", " ", SqrtBox["3"], " ", "kx", " ", "ky"}],
+                     "+", SuperscriptBox["ky", "2"]}], ")"}], " ", SubscriptBox["r", "2"]}], "+", RowBox[
+                {RowBox[{"(", RowBox[{FractionBox[RowBox[{"kx", " ", "kz"}], "2"], "-", RowBox[{FractionBox["1", "2"],
+                       " ", "", " ", SqrtBox["3"], " ", "kx", " ", "kz"}], "+", RowBox[{"ky", " ", "kz"}]}], ")"}],
+                 " ", SubscriptBox["r", "4"]}], "+", RowBox[{RowBox[{"(", RowBox[{FractionBox[RowBox[{"", " ",
+                        "kx"}], "2"], "+", FractionBox[RowBox[{SqrtBox["3"], " ", "kx"}], "2"], "+",
+                     RowBox[{"", " ", "ky"}]}], ")"}], " ", SubscriptBox["t", "1"]}]}],
+             RowBox[{SubscriptBox["e", "1"], "-", SubscriptBox["e", "2"], "+", RowBox[
+                {RowBox[{"(", RowBox[{SuperscriptBox["kx", "2"], "+", RowBox[{"kx", " ", "ky"}], "+", SuperscriptBox[
+                      "ky", "2"]}], ")"}], " ", SubscriptBox["r", "1"]}], "+", RowBox[
+                {RowBox[{"(", RowBox[{RowBox[{"-", SuperscriptBox["kx", "2"]}], "-", RowBox[{"kx", " ", "ky"}], "-",
+                     SuperscriptBox["ky", "2"]}], ")"}], " ", SubscriptBox["r", "3"]}], "+", RowBox[
+                {SuperscriptBox["kz", "2"], " ", SubscriptBox["r", "5"]}], "-", RowBox[{SuperscriptBox["kz", "2"], " ",
+                 SubscriptBox["r", "6"]}]}]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+           ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]], "Output"],
+     Cell[
+      "Read bands 21 and 22 from the original VASP EIGENVAL file using the Fermi energy from the original example:",
+      "ExampleText"], Cell[BoxData["file = FileNameJoin[{NotebookDirectory[], \"EIGENVAL\"}];\neigdata = vaspEig[file, \
+-0.0072, 1, 21, 22];\n{Length[eigdata], First[eigdata]}"], "Input"],
+     Cell[BoxData[RowBox[{"{", RowBox[{"90", ",", RowBox[{"{", RowBox[{RowBox[{"{", RowBox[{"0.`", ",", "0.`", ",",
+                   "0.`"}], "}"}], ",", RowBox[{"{", RowBox[{RowBox[{"-", "0.337773`"}], ",", "2.612089`"}], "}"}]}],
+             "}"}]}], "}"}]], "Output"], Cell["Shift the local k.p expansion from K to the absolute fractional \
+coordinates in EIGENVAL, then tune the model against the VASP bands:", "ExampleText"],
+     Cell[BoxData["hamshift = ham /. {kx -> kx - 1/3, ky -> ky - 1/3};\nbandManipulateWithVASP[hamshift, eigdata, \
+\"PlotRange\" -> {-2, 3}, \"ManipulateRange\" -> {-4, 5}]"], "Input"],
+     Cell[BoxData[DynamicBox[Uncompress["1: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\
+HMSiX2l5jAn8PMUUAKSAo9XtKZ/4fQhFoRg=="], SingleEvaluation -> True, TrackedSymbols :> {}]], "Output"]}, Open]],
+  Cell[CellGroupData[{Cell["Related Functions", "SeeAlsoSection"],
+     Cell[TextData[{ButtonBox["vaspEig", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/vaspEig"], " ◼ ",
+        ButtonBox["fittingKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/fittingKP"], " ◼ ",
+        ButtonBox["bandManipulate", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/bandManipulate"]}],
+      "SeeAlso"]}, Open]], Cell[CellGroupData[{Cell["Related Guides", "MoreAboutSection"],
+     Cell[TextData[{ButtonBox["MagneticKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/guide/MagneticKP"]}],
+      "MoreAbout"]}, Open]], Cell[CellGroupData[{Cell["Related Tutorials", "TutorialsSection"],
+     Cell[TextData[{ButtonBox["Getting Started with MagneticKP", BaseStyle -> "Link",
+         ButtonData -> "paclet:MagneticKP/tutorial/GettingStarted"]}], "Tutorials"]}, Open]],
+  Cell[CellGroupData[{Cell["History", "HistorySection"],
+     Cell[TextData[{"New in: ", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | Modified in: ",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | Obsolete in: ", Cell[" ", "HistoryData",
+         CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["Categorization", "CategorizationSection"], Cell["Symbol", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/ref/bandManipulateWithVASP",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["Keywords", "KeywordsSection"], Cell["VASP", "Keywords"],
+     Cell["band comparison", "Keywords"], Cell["interactive", "Keywords"], Cell["fitting", "Keywords"]}, Closed]]},
+ TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "bandManipulateWithVASP",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

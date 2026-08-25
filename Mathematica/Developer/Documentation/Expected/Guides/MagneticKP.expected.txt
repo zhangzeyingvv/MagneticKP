@@ -1,0 +1,4 @@
+MagneticKP constructs symmetry-allowed k.p Hamiltonians
+Constructing k.p models
+Bands and parameter fitting
+Getting Started with MagneticKP

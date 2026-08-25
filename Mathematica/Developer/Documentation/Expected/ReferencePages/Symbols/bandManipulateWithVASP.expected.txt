@@ -1,0 +1,9 @@
+bandManipulateWithVASP
+interactively compares the eigenvalues of ham with imported VASP eigenvalues.
+bandManipulateWithVASP[
+showMLGCorep[{156, 50}
+input = interfaceRep[{156, 50}
+ham = kpHam[2, input]
+eigdata = vaspEig[file, -0.0072, 1, 21, 22]
+hamshift = ham /.
+bandManipulateWithVASP[hamshift, eigdata

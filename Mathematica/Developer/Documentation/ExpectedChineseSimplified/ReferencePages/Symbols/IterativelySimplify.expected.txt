@@ -1,0 +1,3 @@
+IterativelySimplify
+使用默认求解方法构造满足对称性要求的 k.p 哈密顿量。
+IterativelySimplify[

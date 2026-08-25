@@ -1,0 +1,7 @@
+bandplot
+应用参数规则后，沿带标签的倒易分数坐标路径绘制 ham 的数值本征值。
+bandplot[
+ham = kpHam[1, input]
+rules = Thread[params
+bandplot[path, 30, ham, rules
+YTicks

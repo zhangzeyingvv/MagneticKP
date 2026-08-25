@@ -1,0 +1,3 @@
+GETkpHam
+constructs only the homogeneous order-n part of a k.p Hamiltonian using the legacy calling convention.
+GETkpHam[

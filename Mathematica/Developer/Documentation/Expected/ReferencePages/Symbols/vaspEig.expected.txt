@@ -1,0 +1,3 @@
+vaspEig
+imports selected bands from a VASP EIGENVAL file and shifts their energies by efermi.
+vaspEig[

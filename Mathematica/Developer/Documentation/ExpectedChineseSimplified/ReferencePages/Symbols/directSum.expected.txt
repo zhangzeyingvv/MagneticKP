@@ -1,0 +1,3 @@
+directSum
+返回矩阵 a 和 b 的分块对角直和。
+directSum[

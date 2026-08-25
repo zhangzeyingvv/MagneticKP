@@ -1,0 +1,3 @@
+fittingKP
+fits the free parameters of ham to selected reference bands.
+fittingKP[

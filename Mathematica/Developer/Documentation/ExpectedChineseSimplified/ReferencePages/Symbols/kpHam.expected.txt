@@ -1,0 +1,3 @@
+kpHam
+构造截至 korder 阶、满足对称性要求的 k.p 哈密顿量，并以 Association 返回结果。
+kpHam[

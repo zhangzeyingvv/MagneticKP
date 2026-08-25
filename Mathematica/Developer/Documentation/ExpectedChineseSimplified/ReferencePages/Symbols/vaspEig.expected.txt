@@ -1,0 +1,3 @@
+vaspEig
+从 VASP EIGENVAL 文件导入指定能带，并用 efermi 平移能量。
+vaspEig[

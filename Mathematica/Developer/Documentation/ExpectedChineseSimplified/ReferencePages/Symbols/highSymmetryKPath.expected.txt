@@ -1,0 +1,8 @@
+highSymmetryKPath
+根据 interfaceRep 输入中的完整磁小余群返回一条带标签的局域动量路径。
+highSymmetryKPath[
+input = interfaceRep[
+{191, 234}
+path = highSymmetryKPath[input]
+ham = kpHam[1, input]
+bandplot[

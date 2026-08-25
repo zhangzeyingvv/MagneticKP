@@ -1,0 +1,3 @@
+getGenerator
+根据有限群的全部元素和乘法函数返回一个生成子集。
+getGenerator[

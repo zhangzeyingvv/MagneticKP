@@ -1,0 +1,3 @@
+getGenerator
+returns a generating subset for a finite group described by its elements and multiplication function.
+getGenerator[

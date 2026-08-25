@@ -1,0 +1,9 @@
+bandManipulateWithVASP
+交互比较 ham 的本征值与导入的 VASP 本征值。
+bandManipulateWithVASP[
+showMLGCorep[{156, 50}
+input = interfaceRep[{156, 50}
+ham = kpHam[2, input]
+eigdata = vaspEig[file, -0.0072, 1, 21, 22]
+hamshift = ham /.
+bandManipulateWithVASP[hamshift, eigdata

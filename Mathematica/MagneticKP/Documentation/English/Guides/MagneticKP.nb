@@ -1,0 +1,47 @@
+Notebook[{Cell["MagneticKP", "GuideTitle"], Cell["MagneticKP constructs symmetry-allowed k.p Hamiltonians, connects to \
+representation packages, plots model bands, and fits model parameters to VASP data.", "GuideAbstract"],
+  Cell[CellGroupData[{Cell["", "GuideFunctionsSection"],
+     Cell[CellGroupData[{Cell["Constructing k.p models", "GuideFunctionsSubsection"],
+        Cell[TextData[{ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"],
+           " \:2014 construct a symmetry-allowed k.p Hamiltonian."}], "GuideText"],
+        Cell[TextData[{ButtonBox["interfaceRep", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/interfaceRep"], " \:2014 prepare kpHam input from SpaceGroupIrep or MSGCorep."}],
+         "GuideText"], Cell[TextData[{ButtonBox["IterativelySimplify", BaseStyle -> "Link",
+            ButtonData -> "paclet:MagneticKP/ref/IterativelySimplify"],
+           " \:2014 call the default construction method directly."}], "GuideText"],
+        Cell[TextData[{ButtonBox["GETkpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/GETkpHam"],
+           " \:2014 use the legacy homogeneous-order interface."}], "GuideText"]}, Open]], Cell["\t", "GuideDelimiter"],
+     Cell[CellGroupData[{Cell["Bands and parameter fitting", "GuideFunctionsSubsection"],
+        Cell[TextData[{ButtonBox["highSymmetryKPath", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/highSymmetryKPath"],
+           " \:2014 generate a local momentum path from little-co-group subgroups."}], "GuideText"],
+        Cell[TextData[{ButtonBox["bandManipulate", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/bandManipulate"], " \:2014 explore a model with interactive parameter controls."}],
+         "GuideText"], Cell[TextData[{ButtonBox["bandplot", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/bandplot"], " \:2014 plot a numerical model along a labeled momentum path."}],
+         "GuideText"], Cell[TextData[{ButtonBox["vaspEig", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/vaspEig"], " \:2014 import selected bands from a VASP EIGENVAL file."}], "GuideText"],
+        Cell[TextData[{ButtonBox["bandManipulateWithVASP", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/bandManipulateWithVASP"], " \:2014 compare model bands with imported VASP data."}],
+         "GuideText"], Cell[TextData[{ButtonBox["fittingKP", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/fittingKP"], " \:2014 fit model parameters to selected band data."}], "GuideText"]},
+       Open]], Cell["\t", "GuideDelimiter"], Cell[CellGroupData[{Cell["Utilities", "GuideFunctionsSubsection"],
+        Cell[TextData[{ButtonBox["getGenerator", BaseStyle -> "Link", ButtonData ->
+             "paclet:MagneticKP/ref/getGenerator"], " \:2014 find a generating subset of a finite group."}], "GuideText"],
+        Cell[TextData[{ButtonBox["directSum", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/directSum"],
+           " \:2014 form a block-diagonal direct sum."}], "GuideText"]}, Open]]}, Open]],
+  Cell[CellGroupData[{Cell["Tutorials", "GuideTutorialsSection"],
+     Cell[TextData[{ButtonBox["Getting Started with MagneticKP", BaseStyle -> "Link",
+         ButtonData -> "paclet:MagneticKP/tutorial/GettingStarted"]}], "GuideTutorial"]}, Open]],
+  Cell[CellGroupData[{Cell["History", "HistorySection"],
+     Cell[TextData[{"New in: ", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | Modified in: ",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | Obsolete in: ", Cell[" ", "HistoryData",
+         CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["Categorization", "CategorizationSection"], Cell["Guide", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/guide/MagneticKP",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["Keywords", "KeywordsSection"], Cell["k.p Hamiltonian", "Keywords"],
+     Cell["symmetry", "Keywords"], Cell["band structure", "Keywords"], Cell["VASP", "Keywords"]}, Closed]]},
+ TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "MagneticKP",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "GuidePageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

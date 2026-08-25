@@ -1,0 +1,3 @@
+directSum
+returns the block-diagonal direct sum of matrices a and b.
+directSum[

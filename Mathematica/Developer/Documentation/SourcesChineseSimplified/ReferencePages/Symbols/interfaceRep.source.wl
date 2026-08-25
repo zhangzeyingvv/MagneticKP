@@ -1,0 +1,156 @@
+Notebook[{Cell[CellGroupData[{Cell["interfaceRep", "ObjectName"],
+     Cell[TextData[{Cell["   ", "ModInfo"], Cell[BoxData["interfaceRep[group, k, rep]"], "InlineFormula"], "  ",
+        "将 SpaceGroupIrep 或 MSGCorep 的表示数据转换为 kpHam 可接受的输入。"}], "Usage"],
+     Cell["SpaceGroupIrep 使用整数空间群编号；MSGCorep 使用 BNS 编号对 {spaceGroup, serial}。",
+      "Notes"],
+     Cell[
+      "k 可以是高对称点标签或精确坐标。rep 可以选择一个表示，也可以给出需要取直和的表示列表。"\
+, "Notes"],
+     Cell[
+      "对于 MSGCorep，rep 中的每个整数对应 showMLGCorep 表格第一列的 Index；此处 {2} 选择 B_2。"\
+, "Notes"],
+     Cell[
+      "返回的 Association 会记录所选 k 点标签和坐标系，使 highSymmetryKPath 可以自动标记局域路径。"\
+, "Notes"], Cell["调用 interfaceRep 前需要先载入 SpaceGroupIrep 或 MSGCorep。", "Notes"],
+     Cell[BoxData[GridBox[{{Cell["      ", "TableRowIcon"], "\"CartesianCoordinates\"", "True",
+          Cell["指定是否把对称操作转换到笛卡尔动量坐标。", "TableText"]},
+         {Cell["      ", "TableRowIcon"], "\"CalculateGenerators\"", "True",
+          Cell["指定返回的输入是生成子集还是全部群元。", "TableText"]}},
+        GridBoxAlignment -> {"Columns" -> {{Left}}}]], "3ColumnTableMod"]}, Open]],
+  Cell[CellGroupData[{Cell["范例初始化", "ExamplesInitializationSection"],
+     Cell[BoxData["CompoundExpression[Needs[\"MagneticKP`\"], Needs[\"MSGCorep`\"]]"], "ExampleInitialization"]},
+    Open]], Cell[CellGroupData[{Cell["基本范例", "PrimaryExamplesSection"],
+     Cell["列出磁空间群 13.65 在 B 点的共表示：", "ExampleText"],
+     Cell[BoxData["showMLGCorep[{13, 65}, \"B\"]"], "Input"],
+     Cell[BoxData[TagBox[GridBox[{{TagBox[GridBox[{{TemplateBox[{" ", "\" \"", "\"MSG \"", StyleBox[
+                  TemplateBox[{"13", "\".\"", "65"}, "RowDefault"], Bold, RGBColor[0, 0, 1], StripOnInput -> False],
+                 "\"(\"", TemplateBox[{" ", "\" \"", TemplateBox[{StyleBox[TemplateBox[{"\"P\"", "\"2\"", "\"/\"",
+                        "\"c\""}, "RowDefault"], Bold, RGBColor[0, 0, 1], StripOnInput -> False], "\",\""},
+                    "RowDefault"], "\"\"", "\"BC:\"", StyleBox[TemplateBox[{"\"P\"", "\"2\"", "\"/\"", "\"b\""},
+                     "RowDefault"], Bold, RGBColor[0, 0, 1], StripOnInput -> False]}, "RowWithSeparators"],
+                 "\"):  k-point name is \"", StyleBox["\"B\"", Bold, RGBColor[0, 0, 1], StripOnInput -> False],
+                 "\", for \"", TemplateBox[{",", "\",\"", "\"MonoPrim\""}, "RowWithSeparators"]},
+                "RowWithSeparators"]}, {TemplateBox[{TemplateBox[{"\"▶  k=(\"", TemplateBox[{",", "\",\"",
+                     RowBox[{"-", FractionBox["1", "2"]}], "0", "0"}, "RowWithSeparators"], "\")\""}, "RowDefault"],
+                 "\" standard\""}, "RowDefault"]}}, GridBoxAlignment -> {"Columns" -> {{Left}}},
+             DefaultBaseStyle -> "Column", GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+            "Column"]}, {TagBox[GridBox[{{"\"Index\"", "", "", "1", "2", "3", "4"}, {"\"Element\"", "", "",
+               TemplateBox[{"\"{\"", "\"E\"", "\"|\"", TemplateBox[{"0", "0", "0"}, "RowDefault"], "\"}\""},
+                "RowDefault"], TemplateBox[{"\"{\"", SubscriptBox["\"C\"", "\"2z\""], "\"|\"", TemplateBox[
+                  {"0", "0", "0"}, "RowDefault"], "\"}\""}, "RowDefault"], TemplateBox[{"\"{\"", "\"I\"", "\"|\"",
+                 TemplateBox[{StyleBox[FractionBox["1", "2"], Small, StripOnInput -> False], "0", "0"}, "RowDefault"],
+                 "\"}\""}, "RowDefault"], TemplateBox[{"\"{\"", SubscriptBox["\"σ\"", "\"z\""], "\"|\"",
+                 TemplateBox[{StyleBox[FractionBox["1", "2"], Small, StripOnInput -> False], "0", "0"}, "RowDefault"],
+                 "\"}\""}, "RowDefault"]}, {TagBox[GridBox[{{"\"Rotation\""}, {"\"matrix\""}}, GridBoxAlignment ->
+                  {"Columns" -> {{Left}}}, DefaultBaseStyle -> "Column", GridBoxItemSize -> {"Columns" -> {{All}},
+                   "Rows" -> {{All}}}], "Column"], "", "", TagBox[RowBox[{"(", "⁠", GridBox[{{"1", "0", "0"},
+                    {"0", "1", "0"}, {"0", "0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments ->
+                    Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]],
+               TagBox[RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", "1"}], "0", "0"}, {"0", RowBox[{"-", "1"}], "0"},
+                    {"0", "0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", "1"}], "0", "0"}, {"0", RowBox[{"-", "1"}], "0"},
+                    {"0", "0", RowBox[{"-", "1"}]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{"1", "0", "0"}, {"0", "1", "0"}, {"0", "0", RowBox[{"-", "1"}]}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]}, {TagBox[GridBox[{{"\"Spin(↓↑)\""},
+                  {"\"rotation\""}, {"\"matrix\""}}, GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle ->
+                  "Column", GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}], "Column"], "", "",
+               TagBox[RowBox[{"(", "⁠", GridBox[{{"1", "0"}, {"0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", ""}], "0"},
+                    {"0", ""}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{"1", "0"}, {"0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{RowBox[{"-", ""}], "0"},
+                    {"0", ""}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]},
+              {"1", "\" \\!\\(\\*SubscriptBox[\\(B\\), \\(1\\)]\\) \"", "\"x\"", TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"1", "0"}, {"0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+                   ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[
+                RowBox[{"(", "⁠", GridBox[{{"0", "1"}, {"1", "0"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{"1", "0"}, {"0", RowBox[{"-", "1"}]}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"0", "1"}, {RowBox[{"-", "1"}], "0"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]]}, {"2", "\" \\!\\(\\*SubscriptBox[\\(B\\), \\(2\\)]\\) \"", "\"x\"", TagBox[
+                RowBox[{"(", "⁠", GridBox[{{"1", "0"}, {"0", "1"}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{"0", "1"}, {RowBox[{"-", "1"}], "0"}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠",
+                  GridBox[{{"1", "0"}, {"0", RowBox[{"-", "1"}]}}, RowSpacings -> 1, ColumnSpacings -> 1,
+                   RowAlignments -> Baseline, ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$,
+                 MatrixForm[BoxForm`e$]]], TagBox[RowBox[{"(", "⁠", GridBox[{{"0", "1"}, {"1", "0"}},
+                   RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline, ColumnAlignments -> Center],
+                  "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]}}, GridBoxAlignment ->
+              {"Columns" -> {{Center}}, "Rows" -> {{Center}}}, AutoDelete -> False, GridBoxBackground ->
+              {"Columns" -> {{None}}, "Rows" -> {{None}}, "ItemsIndexed" -> {{{1, 4}, {1, -1}} -> RGBColor[1., 1.,
+                   0.9], {{2, 2}, {1, -1}} -> RGBColor[1., 1., 0.9], {}, {{5, 5}, {1, -1}} -> RGBColor[0.95, 1., 0.95],
+                 {}, {{6, -1}, {1, -1}} -> RGBColor[0.95, 0.95, 1.]}}, GridBoxDividers -> {"Columns" ->
+                {{Directive[Thickness[Tiny], GrayLevel[0.8]]}}, "ColumnsIndexed" -> {1 -> Directive[GrayLevel[0],
+                   Thickness[2]], 4 -> Directive[GrayLevel[0], Thickness[2]], -1 -> Directive[GrayLevel[0],
+                   Thickness[2]], 2 -> Directive[Thickness[Tiny], GrayLevel[0.8]], 3 -> Directive[Thickness[Tiny],
+                   GrayLevel[0.8]]}, "Rows" -> {{Directive[Thickness[Tiny], GrayLevel[0.8]]}}, "RowsIndexed" ->
+                {1 -> Directive[GrayLevel[0], Thickness[2]], 5 -> Directive[GrayLevel[0], Thickness[2]],
+                 6 -> Directive[GrayLevel[0], Thickness[2]], -1 -> Directive[GrayLevel[0], Thickness[2]],
+                 2 -> Directive[Thickness[Tiny], GrayLevel[0.8]]}}, GridBoxFrame -> {"Columns" -> {{True}}, "Rows" ->
+                {{True}}}, GridBoxItemSize -> {"Columns" -> {{All}}, "Rows" -> {{All}}}], "Grid"]}},
+         GridBoxAlignment -> {"Columns" -> {{Left}}}, DefaultBaseStyle -> "Column",
+         GridBoxItemSize -> {"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}], "Column"]], "Output"],
+     Cell[
+      "表格中第二个数据行标记为 B_2，因此用 {2} 选择第二个共表示。interfaceRep 会直接返回完整的输入 Association："\
+, "ExampleText"], Cell[BoxData["input = interfaceRep[{13, 65}, \"B\", {2}]"], "Input"],
+     Cell[BoxData[RowBox[{"", RowBox[{RowBox[{"\"Unitary\"", "", RowBox[{"", RowBox[
+                {RowBox[{TemplateBox[{"\"{\"", SubscriptBox["\"C\"", "\"2z\""], "\"|\"", TemplateBox[{"0", "0", "0"},
+                      "RowDefault"], "\"}\""}, "RowDefault"], "", RowBox[{"{", RowBox[{RowBox[{"{", RowBox[
+                          {RowBox[{"{", RowBox[{"0", ",", "1"}], "}"}], ",", RowBox[{"{", RowBox[{RowBox[{"-", "1"}],
+                               ",", "0"}], "}"}]}], "}"}], ",", RowBox[{"{", RowBox[{RowBox[{"-", "kx"}], ",",
+                           RowBox[{"-", "ky"}], ",", "kz"}], "}"}]}], "}"}]}], ",", RowBox[
+                  {TemplateBox[{"\"{\"", "\"I\"", "\"|\"", TemplateBox[{StyleBox[FractionBox["1", "2"], Small,
+                        StripOnInput -> False], "0", "0"}, "RowDefault"], "\"}\""}, "RowDefault"], "",
+                   RowBox[{"{", RowBox[{RowBox[{"{", RowBox[{RowBox[{"{", RowBox[{"1", ",", "0"}], "}"}], ",",
+                           RowBox[{"{", RowBox[{"0", ",", RowBox[{"-", "1"}]}], "}"}]}], "}"}], ",", RowBox[
+                        {"{", RowBox[{RowBox[{"-", "kx"}], ",", RowBox[{"-", "ky"}], ",", RowBox[{"-", "kz"}]}],
+                         "}"}]}], "}"}]}]}], ""}]}], ",", RowBox[{"\"Anitunitary\"", "",
+             RowBox[{"", ""}]}], ",", RowBox[{"\"lable\"", "",
+             RowBox[{"{", "\"\\!\\(\\*SubscriptBox[\\(B\\), \\(2\\)]\\)\"", "}"}]}], ",",
+           RowBox[{"\"GroupInput\"", "", "\"Generators\""}], ",", RowBox[{"\"KPoint\"", "",
+             RowBox[{"{", RowBox[{RowBox[{"{", RowBox[{RowBox[{"-", FractionBox["1", "2"]}], ",", "0", ",", "0"}],
+                   "}"}], ",", "\"B\"", ",", RowBox[{"{", "\"MonoPrim\"", "}"}]}], "}"}]}], ",",
+           RowBox[{"\"KPointLabel\"", "", "\"B\""}], ",", RowBox[{"\"CoordinateSystem\"", "", "\"Cartesian\""}],
+           ",", RowBox[{"\"Group\"", "", RowBox[{"{", RowBox[{"13", ",", "65"}], "}"}]}]}], ""}]], "Output"],
+     Cell["将返回的 Association 直接传给 kpHam，构造一阶哈密顿量：", "ExampleText"],
+     Cell[BoxData["ham = kpHam[1, input][\"ham\"];\nMatrixForm[ham]"], "Input"],
+     Cell[BoxData[TagBox[RowBox[{"(", "⁠", GridBox[{{SubscriptBox["e", "1"],
+             RowBox[{RowBox[{RowBox[{"-", "kx"}], " ", SubscriptBox["t", "1"]}], "-", RowBox[{"ky", " ",
+                 SubscriptBox["t", "2"]}], "+", RowBox[{"", " ", "kz", " ", SubscriptBox["t", "3"]}]}]},
+            {RowBox[{RowBox[{RowBox[{"-", "kx"}], " ", SubscriptBox["t", "1"]}], "-", RowBox[{"ky", " ",
+                 SubscriptBox["t", "2"]}], "-", RowBox[{"", " ", "kz", " ", SubscriptBox["t", "3"]}]}],
+             SubscriptBox["e", "1"]}}, RowSpacings -> 1, ColumnSpacings -> 1, RowAlignments -> Baseline,
+           ColumnAlignments -> Center], "⁠", ")"}], Function[BoxForm`e$, MatrixForm[BoxForm`e$]]]], "Output"]},
+    Open]], Cell[CellGroupData[{Cell["相关函数", "SeeAlsoSection"],
+     Cell[TextData[{ButtonBox["kpHam", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/kpHam"], " ◼ ",
+        ButtonBox["highSymmetryKPath", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/highSymmetryKPath"],
+        " ◼ ", ButtonBox["directSum", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/ref/directSum"]}],
+      "SeeAlso"]}, Open]], Cell[CellGroupData[{Cell["相关指南", "MoreAboutSection"],
+     Cell[TextData[{ButtonBox["MagneticKP", BaseStyle -> "Link", ButtonData -> "paclet:MagneticKP/guide/MagneticKP"]}],
+      "MoreAbout"]}, Open]], Cell[CellGroupData[{Cell["相关教程", "TutorialsSection"],
+     Cell[TextData[{ButtonBox["MagneticKP 入门", BaseStyle -> "Link", ButtonData ->
+          "paclet:MagneticKP/tutorial/GettingStarted"]}], "Tutorials"]}, Open]],
+  Cell[CellGroupData[{Cell["历史", "HistorySection"],
+     Cell[TextData[{"引入版本：", Cell["1.1.0", "HistoryData", CellTags -> "New"], " | 修改版本：",
+        Cell["1.2.0", "HistoryData", CellTags -> "Modified"], " | 废弃版本：",
+        Cell[" ", "HistoryData", CellTags -> "Obsolete"]}], "History"]}, Closed]],
+  Cell[CellGroupData[{Cell["分类", "CategorizationSection"], Cell["Symbol", "Categorization",
+      CellLabel -> "Entity Type"], Cell["MagneticKP", "Categorization", CellLabel -> "Paclet Name"],
+     Cell["MagneticKP`", "Categorization", CellLabel -> "Context"], Cell["MagneticKP/ref/interfaceRep",
+      "Categorization", CellLabel -> "URI"]}, Closed]],
+  Cell[CellGroupData[{Cell["关键词", "KeywordsSection"], Cell["MSGCorep", "Keywords"],
+     Cell["SpaceGroupIrep", "Keywords"], Cell["表示", "Keywords"], Cell["磁空间群", "Keywords"]}, Closed]]},
+ TaggingRules -> <|"Paclet" -> "MagneticKP"|>, WindowTitle -> "interfaceRep",
+ StyleDefinitions -> FrontEnd`FileName[{"Wolfram"}, "FunctionPageStylesExt.nb", CharacterEncoding -> "UTF-8"]]

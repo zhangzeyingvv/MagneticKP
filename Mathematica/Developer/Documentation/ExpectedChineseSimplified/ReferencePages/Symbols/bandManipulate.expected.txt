@@ -1,0 +1,4 @@
+bandManipulate
+创建交互式能带图，并为 ham 中的自由参数提供控件。
+bandManipulate[
+ham = kpHam[1, input]

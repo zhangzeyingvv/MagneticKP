@@ -1,0 +1,3 @@
+GETkpHam
+按照旧版调用方式，仅构造 k.p 哈密顿量的 n 阶齐次部分。
+GETkpHam[

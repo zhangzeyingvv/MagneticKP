@@ -1,0 +1,4 @@
+bandManipulate
+creates an interactive band plot with controls for the free parameters in ham.
+bandManipulate[
+ham = kpHam[1, input]

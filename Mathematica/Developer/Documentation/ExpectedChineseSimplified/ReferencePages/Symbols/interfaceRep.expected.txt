@@ -1,0 +1,6 @@
+interfaceRep
+将 SpaceGroupIrep 或 MSGCorep 的表示数据转换为 kpHam 可接受的输入。
+interfaceRep[
+showMLGCorep[{13, 65}
+input = interfaceRep[{13, 65}
+ham = kpHam[1, input]

@@ -1,0 +1,3 @@
+fittingKP
+根据选定的参考能带拟合 ham 中的自由参数。
+fittingKP[

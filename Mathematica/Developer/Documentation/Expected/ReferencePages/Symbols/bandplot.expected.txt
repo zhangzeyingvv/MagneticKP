@@ -1,0 +1,7 @@
+bandplot
+draws the numerical eigenvalues of ham along a labeled reciprocal-fractional path after applying parameter rules.
+bandplot[
+ham = kpHam[1, input]
+rules = Thread[params
+bandplot[path, 30, ham, rules
+YTicks

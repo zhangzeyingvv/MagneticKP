@@ -1,0 +1,4 @@
+Getting Started with MagneticKP
+This tutorial shows the shortest complete workflow
+result = kpHam[1, input]
+bandManipulate[path, 40, ham
